@@ -34,6 +34,7 @@ class   Droid
         void                setStatus(std::string *Status);
 
         Droid               &operator=(const Droid &rhs);
+        bool                operator==(const Droid &rhs);
 
 
 };

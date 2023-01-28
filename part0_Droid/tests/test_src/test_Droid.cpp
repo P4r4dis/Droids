@@ -79,3 +79,10 @@ Droid           &Droid::operator=(const Droid &rhs)
     return *this;
 }
 
+bool            Droid::operator==(const Droid &rhs)
+{
+    if ((_Id == rhs._Id) && (_Energy == rhs._Energy) && (*_Status == *rhs._Status))
+        return true;
+    else
+        return false;
+}
