@@ -118,3 +118,11 @@ Test(Droid, test_overload_equal_operator, .init = redirect_all_stdout)
 
     cr_assert(droid == droid2);
 }
+
+Test(Droid, test_overload_different_operator, .init = redirect_all_stdout)
+{
+    Droid       droid;
+    Droid       droid2("Avenger");
+
+    cr_assert(droid != droid2);
+}

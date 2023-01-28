@@ -35,6 +35,7 @@ class   Droid
 
         Droid               &operator=(const Droid &rhs);
         bool                operator==(const Droid &rhs);
+        bool                operator!=(const Droid &rhs);
 
 
 };
