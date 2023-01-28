@@ -33,7 +33,12 @@ int     main(void)
     std::cout << "droid.getId = " << droid.getId() << std::endl;
 
 
+    bool result;
+    std::cout << "operator == overloaded = ";
+    result = droid == droid_param;
+    std::cout << std::boolalpha << result << std::endl;
 
+    
     std::cout << "droid destructor = ";
     droid.~Droid();
     std::cout << "copyDroid destructor = ";
