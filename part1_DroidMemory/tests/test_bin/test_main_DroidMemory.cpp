@@ -6,6 +6,8 @@
 #include <signal.h>
 
 #include "../test_include/test_Droid.hpp"
+#include "../test_include/test_DroidMemory.hpp"
+
 #include <iostream>
 
 Test(Droid, test_construction_whith_parameter, .init = redirect_all_stdout)
@@ -154,4 +156,17 @@ Droid 'Avenger' Activated, Memory Dumped\n\
 Droid 'Avenger' Destroyed\n\
 Droid 'Avenger' Destroyed\n\
 Droid 'Rex' Destroyed\n");
+}
+
+Test(DroidMemory, test_DroidMemory_Construction, .init = redirect_all_stdout)
+{
+    DroidMemory     droidMemory;
+
+    cr_assert(droidMemory.getFingerPrint() >= 1 && droidMemory.getFingerPrint() <= SIZE_MAX);
+    cr_assert(droidMemory.getExp() == 0);
+    droidMemory.setFingerPrint(2);
+    cr_assert(droidMemory.getFingerPrint() == 2);
+    droidMemory.setExp(1);
+    cr_assert(droidMemory.getExp() == 1);
+    cr_assert_stdout_eq_str("DroidMemory '1804289383', 0\n");
 }
