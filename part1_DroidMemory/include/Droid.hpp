@@ -13,7 +13,7 @@ class   Droid
         // std::string         *_Status;
         std::unique_ptr<std::string> _Status;
     public:
-        Droid(std::string Id = ""); //CUSTOM CTOR
+        Droid(std::string Id); //CUSTOM CTOR
         Droid(const Droid &copyDroid); //COPY CTOR
         ~Droid(void);
 
