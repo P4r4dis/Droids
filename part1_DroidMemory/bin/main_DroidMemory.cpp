@@ -59,6 +59,19 @@ int     main(void)
     // copyDroid_param.~Droid();
     // std::cout << std::endl;
 
+    DroidMemory     droidMemory;
+
+    std::cout << "droidMemory.getFingerPrint = ";
+    std::cout << droidMemory.getFingerPrint() << std::endl;
+    std::cout << "droidMemory.getExp = ";
+    std::cout << droidMemory.getExp() << std::endl;
+
+    droidMemory.setFingerPrint(1);
+    std::cout << "droidMemory.getFingerPrint after droidMemory.setFingerPrint = ";
+    std::cout << droidMemory.getFingerPrint() << std::endl;
+    droidMemory.setExp(1);
+    std::cout << "droidMemory.getExp after droidMemory.setExp = ";
+    std::cout << droidMemory.getExp() << std::endl;
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     
     return 0;
