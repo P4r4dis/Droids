@@ -97,3 +97,16 @@ Test(Droid, test_destruction, .init = redirect_all_stdout)
     cr_assert(droid.getStatus() == nullptr);
     cr_assert_stdout_eq_str("Droid '' Activated\nDroid '' Destroyed\n");
 }
+
+Test(Droid, test_overload_assigment_operator)
+{
+    Droid       droid;
+    Droid       droid2("Avenger");
+
+    droid = droid2;
+    cr_assert(droid.getId() == droid2.getId());
+    cr_assert(droid.getEnergy() == droid2.getEnergy());
+    cr_assert(droid.getAttack() == droid2.getAttack());
+    cr_assert(droid.getToughness() == droid2.getToughness());
+    cr_assert_str_eq(droid.getStatus()->c_str(), droid2.getStatus()->c_str());
+}
