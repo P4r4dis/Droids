@@ -3,6 +3,7 @@
 
 #include <string>
 #include <memory>
+#include <ostream>
 
 void    redirect_all_stdout(void);
 
@@ -20,24 +21,27 @@ class   Droid
         Droid(const Droid &copyDroid); //COPY CTOR
         ~Droid(void);
 
-        std::string         getId(void);
+        std::string         getId(void) const;
         void                setId(std::string Id);
 
-        size_t              getEnergy(void);
+        size_t              getEnergy(void) const;
         void                setEnergy(size_t Energy);
 
         size_t              getAttack(void) const;
 
         size_t              getToughness(void) const;
 
-        std::string         *getStatus(void);
+        std::string         *getStatus(void) const;
         void                setStatus(std::string *Status);
 
         Droid               &operator=(const Droid &rhs);
         bool                operator==(const Droid &rhs);
         bool                operator!=(const Droid &rhs);
-
+        Droid               &operator<<(size_t &Energy);
 
 };
+
+std::ostream                &operator<<(std::ostream& os, const Droid& rhs);
+
 
 #endif //   !__TEST_DROID__

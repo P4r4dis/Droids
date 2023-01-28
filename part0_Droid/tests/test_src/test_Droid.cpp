@@ -25,7 +25,7 @@ Droid::~Droid(void)
         std::cout << "Droid '" << _Id << "' Destroyed" << std::endl;
 }
 
-std::string     Droid::getId(void)
+std::string     Droid::getId(void) const
 {
     return _Id;
 }
@@ -35,7 +35,7 @@ void            Droid::setId(std::string Id)
     _Id = Id;
 }
 
-size_t          Droid::getEnergy(void)
+size_t          Droid::getEnergy(void) const
 {
     return _Energy;
 }
@@ -55,7 +55,7 @@ size_t          Droid::getToughness(void) const
     return _Toughness;
 }
 
-std::string     *Droid::getStatus(void)
+std::string     *Droid::getStatus(void) const
 {
     // return _Status;
         return _Status.get();
@@ -95,3 +95,35 @@ bool            Droid::operator!=(const Droid &rhs)
     else
         return false;
 }
+
+Droid           &Droid::operator<<(size_t &Energy)
+{	
+    size_t      diff;
+    size_t      max;
+    size_t      min;
+
+    max = 100;
+    min = 0;
+
+    if (_Energy < max)
+    {
+        diff = max - _Energy;
+		_Energy += diff;
+		Energy -= diff;
+    }
+
+    if (_Energy > max)
+        _Energy = max;
+    else if (_Energy < min)
+        _Energy = min;
+
+    return *this;
+}
+
+std::ostream    &operator<<(std::ostream &os, const Droid& rhs)
+{
+    os  << "Droid '" << rhs.getId() << "', " << rhs.getStatus()->data()
+        << ", " << rhs.getEnergy();
+    return os;
+}
+

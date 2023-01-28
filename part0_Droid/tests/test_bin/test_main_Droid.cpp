@@ -126,3 +126,40 @@ Test(Droid, test_overload_different_operator, .init = redirect_all_stdout)
 
     cr_assert(droid != droid2);
 }
+
+Test(Droid, test_overload_stream_insertion_operator, .init = redirect_all_stdout)
+{
+    Droid       droid;
+
+    std::cout << droid << std::endl;
+    cr_assert_stdout_eq_str("Droid '' Activated\nDroid '', Standing by, 50\n");
+}
+
+Test(Droid, test_overload_stream_insertion_operator_reload_Energy, .init = redirect_all_stdout)
+{
+    Droid d;
+    Droid d1("Avenger");
+    size_t Durasel = 200;
+    std::cout << d << std::endl;
+    std::cout << d1 << std::endl;
+    d = d1;
+    d.setStatus(new std::string("Kill Kill Kill!"));
+    d << Durasel;
+    std::cout << d << "--" << Durasel << std::endl;
+}
+
+// Test(Droid, test_main)
+// {
+//     Droid d;
+//     Droid d1("Avenger");
+//     size_t Durasel = 200;
+//     std::cout << d << std::endl;
+//     std::cout << d1 << std::endl;
+//     d = d1;
+//     d.setStatus(new std::string("Kill Kill Kill!"));
+//     d << Durasel;
+//     std::cout << d << "--" << Durasel << std::endl;
+//     Droid d2 = d;
+//     d.setId("Rex");
+//     std::cout << (d2 != d) << std::endl;
+// }
