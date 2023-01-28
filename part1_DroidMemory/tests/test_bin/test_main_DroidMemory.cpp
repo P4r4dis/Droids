@@ -8,28 +8,6 @@
 #include "../test_include/test_Droid.hpp"
 #include <iostream>
 
-Test(Droid, test_construction_whitout_parameter, .init = redirect_all_stdout)
-{
-    Droid       droid;
-
-    cr_assert(droid.getId() == ""); //stdstring
-    cr_assert(droid.getEnergy() == 50); //size_t
-    cr_assert(droid.getAttack() == 25); //const size_t
-    cr_assert(droid.getToughness() == 15); //const size_t
-    cr_assert_str_eq(droid.getStatus()->c_str(), "Standing by"); //std::string *
-
-    droid.setId("1");
-    cr_assert(droid.getId() == "1"); //stdstring
-
-    droid.setEnergy(100);
-    cr_assert(droid.getEnergy() == 100); //size_t
-
-    droid.setStatus(new std::string("Pending by"));
-    cr_assert_str_eq(droid.getStatus()->c_str(), "Pending by"); //std::string *
-
-    cr_assert_stdout_eq_str("Droid '' Activated\n");
-}
-
 Test(Droid, test_construction_whith_parameter, .init = redirect_all_stdout)
 {
     Droid       droid("Avenger");
@@ -54,7 +32,7 @@ Test(Droid, test_construction_whith_parameter, .init = redirect_all_stdout)
 
 Test(Droid, test_construction_copyConstructor, .init = redirect_all_stdout)
 {
-    Droid       droid;
+    Droid       droid("");
     Droid       copyDroid(droid);
 
     cr_assert_neq(&droid, &copyDroid);
@@ -91,7 +69,7 @@ Test(Droid, test_construction_copyConstructor, .init = redirect_all_stdout)
 
 Test(Droid, test_destruction, .init = redirect_all_stdout)
 {
-    Droid       droid;
+    Droid       droid("");
 
     droid.~Droid();
     cr_assert(droid.getStatus() == nullptr);
@@ -100,7 +78,7 @@ Test(Droid, test_destruction, .init = redirect_all_stdout)
 
 Test(Droid, test_overload_assigment_operator, .init = redirect_all_stdout)
 {
-    Droid       droid;
+    Droid       droid("");
     Droid       droid2("Avenger");
 
     droid = droid2;
@@ -113,15 +91,15 @@ Test(Droid, test_overload_assigment_operator, .init = redirect_all_stdout)
 
 Test(Droid, test_overload_equal_operator, .init = redirect_all_stdout)
 {
-    Droid       droid;
-    Droid       droid2;
+    Droid       droid("");
+    Droid       droid2("");
 
     cr_assert(droid == droid2);
 }
 
 Test(Droid, test_overload_different_operator, .init = redirect_all_stdout)
 {
-    Droid       droid;
+    Droid       droid("");
     Droid       droid2("Avenger");
 
     cr_assert(droid != droid2);
@@ -129,7 +107,7 @@ Test(Droid, test_overload_different_operator, .init = redirect_all_stdout)
 
 Test(Droid, test_overload_stream_insertion_operator, .init = redirect_all_stdout)
 {
-    Droid       droid;
+    Droid       droid("");
 
     std::cout << droid << std::endl;
     cr_assert_stdout_eq_str("Droid '' Activated\nDroid '', Standing by, 50\n");
@@ -137,7 +115,7 @@ Test(Droid, test_overload_stream_insertion_operator, .init = redirect_all_stdout
 
 Test(Droid, test_overload_stream_insertion_operator_reload_Energy, .init = redirect_all_stdout)
 {
-    Droid d;
+    Droid d("");
     Droid d1("Avenger");
     size_t Durasel = 200;
     std::cout << d << std::endl;
@@ -150,7 +128,7 @@ Test(Droid, test_overload_stream_insertion_operator_reload_Energy, .init = redir
 
 Test(Droid, test_main, .init = redirect_all_stdout)
 {
-    Droid d;
+    Droid d("");
     Droid d1("Avenger");
     size_t Durasel = 200;
     std::cout << d << std::endl;
