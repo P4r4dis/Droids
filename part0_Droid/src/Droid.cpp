@@ -64,3 +64,14 @@ void            Droid::setStatus(std::string *Status)
 {
     _Status = std::make_unique<std::string>(*Status);
 }
+
+Droid           &Droid::operator=(const Droid &rhs)
+{
+    if(this != &rhs)
+    {
+        _Id = rhs._Id;
+        _Energy = rhs._Energy;
+        _Status = std::make_unique<std::string>(*rhs._Status);
+    }
+    return *this;
+}

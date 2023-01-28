@@ -28,7 +28,9 @@ int     main(void)
     std::cout << "copyDroid_param.getId = " << copyDroid.getId() << std::endl;
 
 
-
+    std::cout << "droid after assignment operator overloaded = ";
+    droid = droid_param;
+    std::cout << "droid.getId = " << droid.getId() << std::endl;
 
 
 
