@@ -83,3 +83,12 @@ bool            Droid::operator==(const Droid &rhs)
     else
         return false;
 }
+
+bool            Droid::operator!=(const Droid &rhs)
+{
+    // return !(*this == rhs);
+    if ((_Id != rhs._Id) || (_Energy != rhs._Energy) || (*_Status != *rhs._Status))
+        return true;
+    else
+        return false;
+}

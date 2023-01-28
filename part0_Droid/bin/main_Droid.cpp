@@ -34,11 +34,14 @@ int     main(void)
 
 
     bool result;
-    std::cout << "operator == overloaded = ";
+    std::cout << "droid == droid_param -> operator == overloaded = ";
     result = droid == droid_param;
     std::cout << std::boolalpha << result << std::endl;
 
-    
+    std::cout << "droid != droid_param -> operator != overloaded = ";
+    result = droid != droid_param;
+    std::cout << std::boolalpha << result << std::endl;
+
     std::cout << "droid destructor = ";
     droid.~Droid();
     std::cout << "copyDroid destructor = ";
