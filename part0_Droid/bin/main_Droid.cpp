@@ -42,6 +42,11 @@ int     main(void)
     result = droid != droid_param;
     std::cout << std::boolalpha << result << std::endl;
 
+    std::cout << "<< operator overloaded = ";
+    size_t durasel = 200;
+    droid << durasel;
+    std::cout << droid << "--" << durasel << std::endl;
+
     std::cout << "droid destructor = ";
     droid.~Droid();
     std::cout << "copyDroid destructor = ";
@@ -51,5 +56,7 @@ int     main(void)
     std::cout << "copyDroid_param destructor = ";
     copyDroid_param.~Droid();
     std::cout << std::endl;
+
+    // std::cout << "REAL DROID MAIN :" << std::endl;
     return 0;
 }
