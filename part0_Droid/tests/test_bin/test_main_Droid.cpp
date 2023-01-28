@@ -148,18 +148,32 @@ Test(Droid, test_overload_stream_insertion_operator_reload_Energy, .init = redir
     std::cout << d << "--" << Durasel << std::endl;
 }
 
-// Test(Droid, test_main)
-// {
-//     Droid d;
-//     Droid d1("Avenger");
-//     size_t Durasel = 200;
-//     std::cout << d << std::endl;
-//     std::cout << d1 << std::endl;
-//     d = d1;
-//     d.setStatus(new std::string("Kill Kill Kill!"));
-//     d << Durasel;
-//     std::cout << d << "--" << Durasel << std::endl;
-//     Droid d2 = d;
-//     d.setId("Rex");
-//     std::cout << (d2 != d) << std::endl;
-// }
+Test(Droid, test_main, .init = redirect_all_stdout)
+{
+    Droid d;
+    Droid d1("Avenger");
+    size_t Durasel = 200;
+    std::cout << d << std::endl;
+    std::cout << d1 << std::endl;
+    d = d1;
+    d.setStatus(new std::string("Kill Kill Kill!"));
+    d << Durasel;
+    std::cout << d << "--" << Durasel << std::endl;
+    Droid d2 = d;
+    d.setId("Rex");
+    std::cout << (d2 != d) << std::endl;
+
+    d2.~Droid();
+    d1.~Droid();
+    d.~Droid();
+    cr_assert_stdout_eq_str("Droid '' Activated\n\
+Droid 'Avenger' Activated\n\
+Droid '', Standing by, 50\n\
+Droid 'Avenger', Standing by, 50\n\
+Droid 'Avenger', Kill Kill Kill!, 100--150\n\
+Droid 'Avenger' Activated, Memory Dumped\n\
+1\n\
+Droid 'Avenger' Destroyed\n\
+Droid 'Avenger' Destroyed\n\
+Droid 'Rex' Destroyed\n");
+}
