@@ -226,3 +226,22 @@ Test(DroidMemory, test_DroidMemory_operator_plusEqual)
     cr_assert(droidMemory.getExp() == 62);
     cr_assert(droidMemory.getFingerPrint() == 1508927115);
 }
+
+// Test(DroidMemory, test_DroidMemory_operator_plus)
+// {
+
+//     DroidMemory     droidMemory;
+//     droidMemory.setExp(100);
+
+//     DroidMemory     droidMemory2;
+//     droidMemory2.setExp(10);
+
+//     // DroidMemory     droidMemory3;
+//     // droidMemory3 = droidMemory + droidMemory2;
+
+//     // std::cout << droidMemory3 << std::endl;
+//         std::cout << droidMemory2 << std::endl;
+
+//     std::cout << droidMemory.getExp() << std::endl;
+
+// }
