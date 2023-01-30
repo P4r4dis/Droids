@@ -80,6 +80,12 @@ int     main(void)
     droidMemory >> droidMemory;
     std::cout << "droidMemory.getExp after stream insetertion operator>> = " << droidMemory.getExp() << std::endl;
     std::cout << droidMemory << std::endl;
+
+    droidMemory += droidMemory;
+    std::cout << "droidMemory.getExp after operator+= = " << droidMemory.getExp() << std::endl;
+    droidMemory += 1;
+    std::cout << "droidMemory.getExp after operator+= size_t = " << droidMemory.getExp() << std::endl;
+
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     
     return 0;
