@@ -30,12 +30,9 @@ void            DroidMemory::setExp(size_t Exp)
 
 DroidMemory     &DroidMemory::operator<<(const DroidMemory &rhs)
 {
-    // _Exp += rhs._Exp;
-    // _FingerPrint ^= rhs._FingerPrint;
-    // return *this;
-    this->_Exp += rhs.getExp();
-    this->_FingerPrint = _FingerPrint ^ rhs.getFingerPrint();
-    return (*this);
+    _Exp += rhs._Exp;
+    _FingerPrint ^= rhs._FingerPrint;
+    return *this;
 }
 
 std::ostream    &operator<<(std::ostream& os, const DroidMemory& rhs)
@@ -45,13 +42,9 @@ std::ostream    &operator<<(std::ostream& os, const DroidMemory& rhs)
     return os;
 }
 
-DroidMemory     &DroidMemory::operator>>(DroidMemory &lhs)
+DroidMemory     &DroidMemory::operator>>(DroidMemory &lhs) const
 {
-    // lhs._Exp += _Exp;
-    // lhs._FingerPrint ^= _FingerPrint;
-    // return lhs;
-
-    lhs.setExp(this->_Exp + lhs.getExp());
-    lhs.setFingerPrint(lhs.getFingerPrint() ^ this->_FingerPrint);
-    return (lhs);
+    lhs._Exp = lhs._Exp + _Exp;
+    lhs._FingerPrint ^= _FingerPrint;
+    return lhs;
 }

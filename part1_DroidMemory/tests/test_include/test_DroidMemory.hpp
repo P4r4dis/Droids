@@ -19,7 +19,7 @@ class DroidMemory
         void            setExp(size_t Exp);
 
         DroidMemory     &operator<<(const DroidMemory &droidMemory);
-        DroidMemory     &operator>>(DroidMemory &droidMemory);
+        DroidMemory     &operator>>(DroidMemory &droidMemory) const;
 
 };
 

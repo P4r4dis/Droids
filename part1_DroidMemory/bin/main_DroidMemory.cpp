@@ -77,6 +77,9 @@ int     main(void)
     std::cout << "droidMemory.getExp after stream insetertion operator<< = " << droidMemory.getExp() << std::endl;
     std::cout << droidMemory << std::endl;
 
+    droidMemory >> droidMemory;
+    std::cout << "droidMemory.getExp after stream insetertion operator>> = " << droidMemory.getExp() << std::endl;
+    std::cout << droidMemory << std::endl;
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     
     return 0;

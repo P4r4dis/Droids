@@ -19,8 +19,11 @@ class DroidMemory
         size_t          getExp(void) const;
         void            setExp(size_t Exp);
 
-        DroidMemory     &operator<<(DroidMemory &droidMemory);
+        DroidMemory     &operator<<(const DroidMemory &droidMemory);
+        DroidMemory     &operator>>(DroidMemory &droidMemory) const;
+
 };
+
 
         std::ostream    &operator<<(std::ostream& os, const DroidMemory& rhs);
 
