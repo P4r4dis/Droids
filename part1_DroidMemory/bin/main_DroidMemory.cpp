@@ -72,6 +72,11 @@ int     main(void)
     droidMemory.setExp(1);
     std::cout << "droidMemory.getExp after droidMemory.setExp = ";
     std::cout << droidMemory.getExp() << std::endl;
+
+    droidMemory << droidMemory;
+    std::cout << "droidMemory.getExp after stream insetertion operator<< = " << droidMemory.getExp() << std::endl;
+    std::cout << droidMemory << std::endl;
+
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     
     return 0;
