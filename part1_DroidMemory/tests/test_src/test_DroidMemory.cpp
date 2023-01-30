@@ -48,3 +48,17 @@ DroidMemory     &DroidMemory::operator>>(DroidMemory &lhs) const
     lhs._FingerPrint ^= _FingerPrint;
     return lhs;
 }
+
+DroidMemory     &DroidMemory::operator+=(const DroidMemory &rhs)
+{
+    _Exp += rhs._Exp;
+    _FingerPrint ^= rhs._FingerPrint;
+    return *this;
+}
+
+DroidMemory     &DroidMemory::operator+=(const size_t rhs)
+{
+    _Exp += rhs;
+    _FingerPrint ^= rhs;
+    return *this;
+}

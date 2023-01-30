@@ -205,3 +205,24 @@ Test(DroidMemory, test_DroidMemory_stream_insertion_lhs_operator, .init = redire
     std::cout << droidMemory << std::endl;
     cr_assert_stdout_eq_str("DroidMemory '846930886', 30\n");
 }
+
+Test(DroidMemory, test_DroidMemory_operator_plusEqual)
+{
+
+    DroidMemory     droidMemory;
+    droidMemory.setExp(10);
+
+    DroidMemory     droidMemory2;
+    droidMemory2.setExp(10);
+
+    droidMemory += droidMemory2;
+    cr_assert(droidMemory.getExp() == 20);
+    cr_assert(droidMemory2.getExp() == 10);
+    cr_assert(droidMemory.getFingerPrint() == 1508927137);
+    cr_assert(droidMemory2.getFingerPrint() == 846930886);
+    std::cout << droidMemory << std::endl;
+
+    droidMemory += 42;
+    cr_assert(droidMemory.getExp() == 62);
+    cr_assert(droidMemory.getFingerPrint() == 1508927115);
+}
