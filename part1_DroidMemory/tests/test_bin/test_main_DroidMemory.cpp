@@ -158,7 +158,7 @@ Droid 'Avenger' Destroyed\n\
 Droid 'Rex' Destroyed\n");
 }
 
-Test(DroidMemory, test_DroidMemory_Construction, .init = redirect_all_stdout)
+Test(DroidMemory, test_DroidMemory_Construction)
 {
     DroidMemory     droidMemory;
 
@@ -168,5 +168,22 @@ Test(DroidMemory, test_DroidMemory_Construction, .init = redirect_all_stdout)
     cr_assert(droidMemory.getFingerPrint() == 2);
     droidMemory.setExp(1);
     cr_assert(droidMemory.getExp() == 1);
-    cr_assert_stdout_eq_str("DroidMemory '1804289383', 0\n");
+}
+
+Test(DroidMemory, test_DroidMemory_stream_insertion_rhs_operator, .init = redirect_all_stdout)
+{
+
+    DroidMemory     droidMemory;
+    droidMemory.setExp(10);
+
+    DroidMemory     droidMemory2;
+    droidMemory2.setExp(10);
+
+    droidMemory << droidMemory2 << droidMemory;
+    cr_assert(droidMemory.getExp() == 40);
+    cr_assert(droidMemory2.getExp() == 10);
+    cr_assert(droidMemory.getFingerPrint() == 0);
+    cr_assert(droidMemory2.getFingerPrint() == 846930886);
+    std::cout << droidMemory << std::endl;
+    cr_assert_stdout_eq_str("DroidMemory '0', 40\n");
 }
