@@ -33,6 +33,7 @@ class DroidMemory
         bool            operator<=(const DroidMemory &rhs);
         bool            operator<=(const size_t rhs);
         bool            operator>=(const DroidMemory &rhs);
+        bool            operator>=(const size_t rhs);
 };
 
         std::ostream    &operator<<(std::ostream& os, const DroidMemory& rhs);
