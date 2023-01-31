@@ -277,6 +277,7 @@ Test(DroidMemory, test_DroidMemory_operator_lower)
 
     DroidMemory mem2;
     cr_assert(mem2 < mem1);
+    cr_assert(mem1 < 100);
 }
 
 
