@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-Test(Droid, test_construction_whith_parameter)
+Test(Droid, test_construction_whith_parameter, .init = redirect_all_stdout)
 {
     Droid       droid("Avenger");
 
@@ -29,10 +29,10 @@ Test(Droid, test_construction_whith_parameter)
     droid.setStatus(new std::string("Pending by"));
     cr_assert_str_eq(droid.getStatus()->c_str(), "Pending by");
 
-    std::cout   << "Exp = " << droid.getBattleData()->getExp() 
-                << " And FingerPrint = " << droid.getBattleData()->getFingerPrint()
-                << std::endl;
-    // cr_assert_stdout_eq_str("Droid 'Avenger' Activated\n");
+    // std::cout   << "Exp = " << droid.getBattleData()->getExp() 
+    //             << " And FingerPrint = " << droid.getBattleData()->getFingerPrint()
+    //             << std::endl;
+    cr_assert_stdout_eq_str("Droid 'Avenger' Activated\n");
 }
 
 Test(Droid, test_construction_copyConstructor, .init = redirect_all_stdout)
@@ -250,4 +250,21 @@ Test(DroidMemory, test_DroidMemory_operator_plus)
     cr_assert(droidMemory3.getExp() == 20);
     droidMemory3 = droidMemory3 + 10;
     cr_assert(droidMemory3.getExp() == 30);
+}
+
+
+Test(DroidMemory, test_DroidMemory_main)
+{
+    DroidMemory     mem1;
+    mem1 += 42;
+
+    DroidMemory mem2 = mem1;
+    std::cout << mem1 << std::endl;
+
+    DroidMemory mem3;
+    mem3 << mem1;
+    mem3 >> mem1;
+    mem3 << mem1;
+    std::cout << mem3 << std::endl;
+    std::cout << mem1 << std::endl;
 }
