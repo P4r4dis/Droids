@@ -119,6 +119,10 @@ int     main(void)
     else
         std::cout << "droidMemory2 < droidMemory = false" << std::endl;
 
+    if (droidMemory > droidMemory2)
+        std::cout << "droidMemory > droidMemory2 = true" << std::endl;
+    else
+        std::cout << "droidMemory > droidMemory2 = false" << std::endl;
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     DroidMemory     mem1;
     mem1 += 42;
