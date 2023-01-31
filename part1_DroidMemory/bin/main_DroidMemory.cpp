@@ -86,6 +86,11 @@ int     main(void)
     droidMemory += 1;
     std::cout << "droidMemory.getExp after operator+= size_t = " << droidMemory.getExp() << std::endl;
 
+
+    droidMemory = droidMemory + droidMemory;
+    std::cout << "droidMemory.getExp after operator+   = " << droidMemory.getExp() << std::endl;
+    droidMemory = droidMemory + 1;
+    std::cout << "droidMemory.getExp after operator+ size_t = " << droidMemory.getExp() << std::endl;
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     
     return 0;
