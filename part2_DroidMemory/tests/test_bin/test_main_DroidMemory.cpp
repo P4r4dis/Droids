@@ -252,8 +252,16 @@ Test(DroidMemory, test_DroidMemory_operator_plus)
     cr_assert(droidMemory3.getExp() == 30);
 }
 
+Test(DroidMemory, test_DroidMemory_operator_EqualEqual)
+{
+    DroidMemory     mem1;
+    mem1 += 42;
 
-Test(DroidMemory, test_DroidMemory_main)
+    DroidMemory mem2 = mem1;
+    cr_assert(mem1 == mem2);
+}
+
+Test(DroidMemory, test_DroidMemory_main, .init = redirect_all_stdout)
 {
     DroidMemory     mem1;
     mem1 += 42;
@@ -267,4 +275,7 @@ Test(DroidMemory, test_DroidMemory_main)
     mem3 << mem1;
     std::cout << mem3 << std::endl;
     std::cout << mem1 << std::endl;
+    cr_assert_stdout_eq_str("DroidMemory '1804289357', 42\n\
+DroidMemory '1804289357', 126\n\
+DroidMemory '846930886', 84\n");
 }
