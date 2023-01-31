@@ -26,6 +26,7 @@ class DroidMemory
         DroidMemory     &operator+(const size_t &rhs) const;
         bool            operator==(const DroidMemory &rhs) const;
         bool            operator!=(const DroidMemory &rhs);
+        bool            operator<(const DroidMemory &rhs);
 
 
 };

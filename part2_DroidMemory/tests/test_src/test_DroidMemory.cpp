@@ -96,3 +96,8 @@ bool            DroidMemory::operator!=(const DroidMemory &rhs)
         return false;
     // return !(*this == rhs);
 }
+
+bool            DroidMemory::operator<(const DroidMemory &rhs)
+{
+    return _Exp < rhs._Exp;
+}
