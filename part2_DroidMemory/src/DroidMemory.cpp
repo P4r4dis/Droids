@@ -131,6 +131,11 @@ bool            DroidMemory::operator<=(const DroidMemory &rhs)
     return _Exp <= rhs._Exp;
 }
 
+bool            DroidMemory::operator<=(const size_t rhs)
+{
+    return _Exp <= rhs;
+}
+
 bool            DroidMemory::operator>=(const DroidMemory &rhs)
 {
     return _Exp > rhs._Exp;

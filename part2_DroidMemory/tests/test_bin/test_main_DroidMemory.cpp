@@ -296,8 +296,10 @@ Test(DroidMemory, test_DroidMemory_operator_lowerOrEqual)
     DroidMemory     mem1;
     mem1 += 42;
 
+    size_t test = 0;
     DroidMemory mem2;
     cr_assert(mem2 <= mem1);
+    cr_assert(mem2 <= test);
 }
 
 Test(DroidMemory, test_DroidMemory_operator_higherOrEqual)
