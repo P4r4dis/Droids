@@ -107,6 +107,16 @@ int     main(void)
         std::cout << "droidMemory2 == droidMemory = true" << std::endl;
     else
         std::cout << "droidMemory2 == droidMemory = false" << std::endl;
+    std::cout << "test " << droidMemory2.getExp() << std::endl;
+    droidMemory2.setExp(0);
+    // droidMemory2.setFingerPrint(6352345);
+
+    std::cout << "test " << droidMemory2.getExp() << std::endl;
+
+    if (droidMemory2 != droidMemory)
+        std::cout << "droidMemory2 != droidMemory = true" << std::endl;
+    else
+        std::cout << "droidMemory2 != droidMemory = false" << std::endl;
 
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     DroidMemory     mem1;
