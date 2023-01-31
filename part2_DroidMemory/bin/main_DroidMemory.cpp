@@ -100,6 +100,14 @@ int     main(void)
                 << droid.getBattleData()->getFingerPrint()
                 << std::endl;
     droid.~Droid();
+
+    DroidMemory     droidMemory2;
+    droidMemory2 = droidMemory;
+    if (droidMemory2 == droidMemory)
+        std::cout << "droidMemory2 == droidMemory = true" << std::endl;
+    else
+        std::cout << "droidMemory2 == droidMemory = false" << std::endl;
+
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     DroidMemory     mem1;
     mem1 += 42;
