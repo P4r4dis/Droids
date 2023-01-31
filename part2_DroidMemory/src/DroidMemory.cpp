@@ -105,3 +105,8 @@ bool            DroidMemory::operator!=(const DroidMemory &rhs)
     else
         return false;
 }
+
+bool            DroidMemory::operator<(const DroidMemory &rhs)
+{
+    return _Exp < rhs._Exp;
+}
