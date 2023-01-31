@@ -27,7 +27,7 @@ class DroidMemory
         bool            operator==(const DroidMemory &rhs) const;
         bool            operator!=(const DroidMemory &rhs);
         bool            operator<(const DroidMemory &rhs);
-
+        bool            operator>(const DroidMemory &rhs);
 
 };
 
