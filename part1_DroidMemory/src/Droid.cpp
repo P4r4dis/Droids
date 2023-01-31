@@ -1,11 +1,11 @@
 #include "../include/Droid.hpp"
 #include <iostream>
-
 Droid::Droid(std::string Id) :  _Id(Id),
                                 _Energy(50),
                                 _Attack(25),
                                 _Toughness(15),
-                                _Status(std::make_unique<std::string>("Standing by"))//_Status(new std::string("Standing by"))
+                                _Status(std::make_unique<std::string>("Standing by")),//_Status(new std::string("Standing by"))
+                                BattleData(std::make_unique<DroidMemory>())
 {
     std::cout << "Droid '" << _Id << "' Activated" << std::endl;
 }
@@ -57,11 +57,14 @@ size_t          Droid::getToughness(void) const
 
 std::string     *Droid::getStatus(void) const
 {
+    // return _Status;
         return _Status.get();
+
 }
 
 void            Droid::setStatus(std::string *Status)
 {
+    // _Status = Status;
     _Status = std::make_unique<std::string>(*Status);
 }
 
@@ -78,7 +81,7 @@ Droid           &Droid::operator=(const Droid &rhs)
 
 bool            Droid::operator==(const Droid &rhs)
 {
-    if ((_Id == rhs._Id) && (_Energy == rhs._Energy) && (*_Status == *rhs._Status))
+    if (*_Status == *rhs._Status)
         return true;
     else
         return false;
@@ -124,3 +127,12 @@ std::ostream    &operator<<(std::ostream &os, const Droid& rhs)
     return os;
 }
 
+DroidMemory     *Droid::getBattleData(void) const
+{
+    return BattleData.get();
+}
+
+void            Droid::setBattleData(DroidMemory *droidMemory)
+{
+    BattleData = std::make_unique<DroidMemory>(*droidMemory);
+}

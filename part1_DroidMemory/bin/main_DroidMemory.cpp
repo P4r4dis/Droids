@@ -91,6 +91,15 @@ int     main(void)
     std::cout << "droidMemory.getExp after operator+   = " << droidMemory.getExp() << std::endl;
     droidMemory = droidMemory + 1;
     std::cout << "droidMemory.getExp after operator+ size_t = " << droidMemory.getExp() << std::endl;
+
+    std::cout << "DroidMemory BattleData created during Droid construction :";
+    Droid           droid("Avenger");
+    std::cout   << "droid.getBattleData()->getExp() Exp = " 
+                << droid.getBattleData()->getExp() 
+                << " And droid.getBattleData()->getFingerPrint() FingerPrint = " 
+                << droid.getBattleData()->getFingerPrint()
+                << std::endl;
+    droid.~Droid();
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     
     return 0;
