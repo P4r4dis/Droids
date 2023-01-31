@@ -87,3 +87,11 @@ bool            DroidMemory::operator==(const DroidMemory &rhs) const
     else
         return false;
 }
+
+bool            DroidMemory::operator!=(const DroidMemory &rhs) const
+{
+    if (_Exp != rhs.getExp() && _FingerPrint != rhs.getFingerPrint())
+        return true;
+    else
+        return false;
+}

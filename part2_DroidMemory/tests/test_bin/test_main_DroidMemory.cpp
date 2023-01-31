@@ -261,6 +261,15 @@ Test(DroidMemory, test_DroidMemory_operator_EqualEqual)
     cr_assert(mem1 == mem2);
 }
 
+Test(DroidMemory, test_DroidMemory_operator_Different)
+{
+    DroidMemory     mem1;
+    mem1 += 42;
+
+    DroidMemory mem2;
+    cr_assert(mem1 != mem2);
+}
+
 Test(DroidMemory, test_DroidMemory_main, .init = redirect_all_stdout)
 {
     DroidMemory     mem1;
