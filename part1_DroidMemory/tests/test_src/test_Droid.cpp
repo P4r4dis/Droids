@@ -5,7 +5,8 @@ Droid::Droid(std::string Id) :  _Id(Id),
                                 _Energy(50),
                                 _Attack(25),
                                 _Toughness(15),
-                                _Status(std::make_unique<std::string>("Standing by"))//_Status(new std::string("Standing by"))
+                                _Status(std::make_unique<std::string>("Standing by")),//_Status(new std::string("Standing by"))
+                                BattleData(std::make_unique<DroidMemory>())
 {
     std::cout << "Droid '" << _Id << "' Activated" << std::endl;
 }
@@ -127,3 +128,12 @@ std::ostream    &operator<<(std::ostream &os, const Droid& rhs)
     return os;
 }
 
+DroidMemory     *Droid::getBattleData(void) const
+{
+    return BattleData.get();
+}
+
+void            Droid::setBattleData(DroidMemory *droidMemory)
+{
+    BattleData = std::make_unique<DroidMemory>(*droidMemory);
+}
