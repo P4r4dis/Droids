@@ -64,19 +64,19 @@ DroidMemory     &DroidMemory::operator+=(const size_t rhs)
     return *this;
 }
 
-// DroidMemory     &DroidMemory::operator+(const DroidMemory &rhs) const
-// {
-//     DroidMemory     *droidMemory = new DroidMemory;
-//     droidMemory->_Exp = _Exp + rhs._Exp;
-//     droidMemory->_FingerPrint = _FingerPrint ^ rhs._FingerPrint;
-//     return *droidMemory; 
-// }
+DroidMemory     &DroidMemory::operator+(const DroidMemory &rhs) const
+{
+    DroidMemory     *droidMemory = new DroidMemory;
+    droidMemory->_Exp = _Exp + rhs._Exp;
+    droidMemory->_FingerPrint = _FingerPrint ^ rhs._FingerPrint;
+    return *droidMemory; 
+}
 
-// DroidMemory     &DroidMemory::operator+(const size_t &rhs) const
-// {
-//     DroidMemory     *droidMemory = new DroidMemory;
-//     droidMemory->_Exp = _Exp + rhs;
-//     droidMemory->_FingerPrint = _FingerPrint ^ rhs;
-//     return *droidMemory; 
-// }
+DroidMemory     &DroidMemory::operator+(const size_t &rhs) const
+{
+    DroidMemory     *droidMemory = new DroidMemory;
+    droidMemory->_Exp = _Exp + rhs;
+    droidMemory->_FingerPrint = _FingerPrint ^ rhs;
+    return *droidMemory; 
+}
 

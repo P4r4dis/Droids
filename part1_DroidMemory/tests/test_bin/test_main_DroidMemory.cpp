@@ -220,28 +220,28 @@ Test(DroidMemory, test_DroidMemory_operator_plusEqual)
     cr_assert(droidMemory2.getExp() == 10);
     cr_assert(droidMemory.getFingerPrint() == 1508927137);
     cr_assert(droidMemory2.getFingerPrint() == 846930886);
-    std::cout << droidMemory << std::endl;
+    // std::cout << droidMemory << std::endl;
 
     droidMemory += 42;
     cr_assert(droidMemory.getExp() == 62);
     cr_assert(droidMemory.getFingerPrint() == 1508927115);
 }
 
-// Test(DroidMemory, test_DroidMemory_operator_plus)
-// {
+Test(DroidMemory, test_DroidMemory_operator_plus)
+{
 
-//     DroidMemory     droidMemory;
-//     droidMemory.setExp(100);
+    DroidMemory     droidMemory;
+    droidMemory.setExp(10);
+    cr_assert(droidMemory.getExp() == 10);
 
-//     DroidMemory     droidMemory2;
-//     droidMemory2.setExp(10);
+    DroidMemory     droidMemory2;
+    droidMemory2.setExp(10);
+    cr_assert(droidMemory2.getExp() == 10);
 
-//     // DroidMemory     droidMemory3;
-//     // droidMemory3 = droidMemory + droidMemory2;
-
-//     // std::cout << droidMemory3 << std::endl;
-//         std::cout << droidMemory2 << std::endl;
-
-//     std::cout << droidMemory.getExp() << std::endl;
-
-// }
+    DroidMemory     droidMemory3;
+    cr_assert(droidMemory3.getExp() == 0);
+    droidMemory3 = droidMemory + droidMemory2;
+    cr_assert(droidMemory3.getExp() == 20);
+    droidMemory3 = droidMemory3 + 10;
+    cr_assert(droidMemory3.getExp() == 30);
+}

@@ -22,6 +22,10 @@ class DroidMemory
         DroidMemory     &operator>>(DroidMemory &lhs) const;
         DroidMemory     &operator+=(const DroidMemory &droidMemory);
         DroidMemory     &operator+=(const size_t rhs);
+        DroidMemory     &operator+(const DroidMemory &rhs) const;
+        DroidMemory     &operator+(const size_t &rhs) const;
+
+
 };
 
         std::ostream    &operator<<(std::ostream& os, const DroidMemory& rhs);
