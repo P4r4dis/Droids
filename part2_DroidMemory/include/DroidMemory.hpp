@@ -35,6 +35,8 @@ class DroidMemory
         bool            operator<=(const size_t rhs);
         bool            operator>=(const DroidMemory &rhs);
         bool            operator>=(const size_t rhs);
+        void            addExp(size_t exp);
+
 };
 
 

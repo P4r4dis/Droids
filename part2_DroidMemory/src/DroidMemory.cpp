@@ -145,3 +145,7 @@ bool            DroidMemory::operator>=(const size_t rhs)
 {
     return _Exp >= rhs;
 }
+
+void DroidMemory::addExp(size_t exp) {
+	this->_Exp += exp;
+}

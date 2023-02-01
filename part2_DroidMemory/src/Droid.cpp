@@ -1,5 +1,6 @@
 #include "../include/Droid.hpp"
 #include <iostream>
+
 Droid::Droid(std::string Id) :  _Id(Id),
                                 _Energy(50),
                                 _Attack(25),
@@ -11,10 +12,11 @@ Droid::Droid(std::string Id) :  _Id(Id),
 }
 
 Droid::Droid(const Droid &copyDroid) :  _Id(copyDroid._Id),
-                                        _Energy(copyDroid._Energy),
+                                        _Energy(50),
                                         _Attack(copyDroid._Attack),
                                         _Toughness(copyDroid._Toughness),
-                                        _Status(std::make_unique<std::string>(*copyDroid._Status))//_Status(new std::string(*copyDroid._Status))
+                                        _Status(std::make_unique<std::string>(*copyDroid._Status)),
+                                        BattleData(std::make_unique<DroidMemory>())//_Status(new std::string(*copyDroid._Status))
 {
     std::cout << "Droid '" << copyDroid._Id << "' Activated, Memory Dumped" << std::endl;
 }
@@ -75,6 +77,7 @@ Droid           &Droid::operator=(const Droid &rhs)
         _Id = rhs._Id;
         _Energy = rhs._Energy;
         _Status = std::make_unique<std::string>(*rhs._Status);
+        BattleData = std::make_unique<DroidMemory>(*rhs.BattleData);
     }
     return *this;
 }
@@ -119,37 +122,35 @@ Droid           &Droid::operator<<(size_t &Energy)
     return *this;
 }
 
+std::ostream    &operator<<(std::ostream &os, const Droid& rhs)
+{
+    os  << "Droid '" << rhs.getId() << "', " << rhs.getStatus()->data()
+        << ", " << rhs.getEnergy();
+    return os;
+}
+
 bool            Droid::operator()(const std::string *Status, size_t Exp)
 {
-    if(_Energy < 10 || _Energy == 0)
+    if(_Energy <= 10)
     {
         _Energy = 0;
         _Status = std::make_unique<std::string>("Battery Low");
-        // BattleData->setExp(Exp);
         return false;
     }
     else if (_Energy >= 10 && BattleData->getExp() >= Exp)
     {
         _Energy -= 10;
         _Status = std::make_unique<std::string>(*Status + " - Completed!");
-        BattleData->setExp(Exp / 2);
+        BattleData->addExp(Exp / 2);
         return true;
     }
     else
     {
         _Energy -= 10;
         _Status = std::make_unique<std::string>(*Status + " - Failed!");
-        BattleData->setExp(Exp);
+        BattleData->addExp(Exp);
         return false;
     }
-    return true;
-}
-
-std::ostream    &operator<<(std::ostream &os, const Droid& rhs)
-{
-    os  << "Droid '" << rhs.getId() << "', " << rhs.getStatus()->data()
-        << ", " << rhs.getEnergy();
-    return os;
 }
 
 DroidMemory     *Droid::getBattleData(void) const
