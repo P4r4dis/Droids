@@ -135,6 +135,24 @@ Test(Droid, test_overload_stream_insertion_operator_reload_Energy, .init = redir
     std::cout << d << "--" << Durasel << std::endl;
 }
 
+Test(Droid, test_overload_operator_parenthesis)
+{
+    Droid d("rudolf");
+    Droid d2("gaston");
+    size_t DuraSell = 40;
+
+    d << DuraSell ;
+    d.setStatus(new std::string("having some reset"));
+    d2.setStatus( new std::string("having some reset"));
+
+    if (d2 != d && !(d == d2))
+        std::cout << "a droid is a droid, all its matter is what it 's doing" << std::endl;
+    d(new std::string( "take a coffee"), 20);
+    std::cout << d << std::endl;
+    cr_assert(d.getEnergy() == 80);
+    cr_assert_str_eq(d.getStatus()->c_str(), "take a coffee - Failed!");
+}
+
 Test(Droid, test_main, .init = redirect_all_stdout)
 {
     Droid d("");

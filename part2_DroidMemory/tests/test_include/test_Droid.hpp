@@ -42,6 +42,7 @@ class   Droid
         bool                            operator==(const Droid &rhs);
         bool                            operator!=(const Droid &rhs);
         Droid                           &operator<<(size_t &Energy);
+        bool                            operator()(const std::string *Status, size_t Exp);
 
         DroidMemory                     *getBattleData(void) const;
         void                            setBattleData(DroidMemory *droidMemory);

@@ -108,12 +108,11 @@ Droid           &Droid::operator<<(size_t &Energy)
     max = 100;
     min = 0;
 
-    if (_Energy < max)
-    {
-        diff = max - _Energy;
+	if (_Energy < 100) {
+		diff = std::min(max - _Energy, Energy);
 		_Energy += diff;
 		Energy -= diff;
-    }
+	}
 
     if (_Energy > max)
         _Energy = max;
@@ -128,6 +127,31 @@ std::ostream    &operator<<(std::ostream &os, const Droid& rhs)
     os  << "Droid '" << rhs.getId() << "', " << rhs.getStatus()->data()
         << ", " << rhs.getEnergy();
     return os;
+}
+
+bool            Droid::operator()(const std::string *Status, size_t Exp)
+{
+    if(_Energy < 10 || _Energy == 0)
+    {
+        _Energy = 0;
+        _Status = std::make_unique<std::string>("Battery Low");
+        BattleData->setExp(Exp);
+        return false;
+    }
+    else if (_Energy >= 10 && BattleData->getExp() >= Exp)
+    {
+        _Energy -= 10;
+        _Status = std::make_unique<std::string>(*Status + " - Completed!");
+        BattleData->setExp(Exp / 2);
+        return true;
+    }
+    else
+    {
+        _Energy -= 10;
+        _Status = std::make_unique<std::string>(*Status + " - Failed!");
+        BattleData->setExp(Exp);        
+    }
+    return true;
 }
 
 DroidMemory     *Droid::getBattleData(void) const
