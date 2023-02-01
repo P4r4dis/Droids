@@ -390,22 +390,22 @@ DroidMemory '1804289357', 126\n\
 DroidMemory '846930886', 84\n");
 }
 
-// Test(DroidMemory, test_DroidMemory_main2, .init = redirect_all_stdout)
-// {
-//     DroidMemory mem1;
-//     mem1 += 42;
-//     std::cout << mem1 << std::endl;
-//     DroidMemory mem2;
-//     mem2 << mem1;
-//     mem2 >> mem1;
-//     mem2 << mem1;
-//     std::cout << mem2 << std::endl;
-//     std::cout << mem1 << std::endl;
+Test(DroidMemory, test_DroidMemory_main2, .init = redirect_all_stdout)
+{
+    DroidMemory mem1;
+    mem1 += 42;
+    std::cout << mem1 << std::endl;
+    DroidMemory mem2;
+    mem2 << mem1;
+    mem2 >> mem1;
+    mem2 << mem1;
+    std::cout << mem2 << std::endl;
+    std::cout << mem1 << std::endl;
 
-//     DroidMemory mem3 = mem1;
-//     DroidMemory mem4;
-//     mem4 = mem1 + mem3;
-//     cr_assert_stdout_eq_str("DroidMemory '1804289357', 42\n\
-// DroidMemory '1804289357', 126\n\
-// DroidMemory '846930886', 84\n");
-// }
+    DroidMemory mem3 = mem1;
+    DroidMemory mem4;
+    mem4 = mem1 + mem3;
+    cr_assert_stdout_eq_str("DroidMemory '1804289357', 42\n\
+DroidMemory '1804289357', 126\n\
+DroidMemory '846930886', 84\n");
+}
