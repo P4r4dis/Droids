@@ -133,6 +133,19 @@ int     main(void)
         std::cout << "droidMemory >= droidMemory2 = true" << std::endl;
     else
         std::cout << "droidMemory >= droidMemory2 = false" << std::endl;
+
+    Droid d("rudolf");
+    Droid d2("gaston");
+    size_t DuraSell = 40;
+
+    d << DuraSell ;
+    d.setStatus(new std::string("having some reset"));
+    d2.setStatus( new std::string("having some reset"));
+
+    if (d2 != d && !(d == d2))
+        std::cout << "a droid is a droid, all its matter is what it 's doing" << std::endl;
+    d(new std::string( "take a coffee"), 20);
+    std::cout << d << std::endl;
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
     DroidMemory     mem1;
     mem1 += 42;

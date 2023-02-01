@@ -41,6 +41,7 @@ class   Droid
 
         DroidMemory                     *getBattleData(void) const;
         void                            setBattleData(DroidMemory *droidMemory);
+        bool                            operator()(const std::string *Status, size_t Exp);
 };
 std::ostream                            &operator<<(std::ostream& os, const Droid& rhs);
 

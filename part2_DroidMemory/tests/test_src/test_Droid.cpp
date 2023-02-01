@@ -149,7 +149,8 @@ bool            Droid::operator()(const std::string *Status, size_t Exp)
     {
         _Energy -= 10;
         _Status = std::make_unique<std::string>(*Status + " - Failed!");
-        BattleData->setExp(Exp);        
+        BattleData->setExp(Exp);
+        return false;
     }
     return true;
 }
