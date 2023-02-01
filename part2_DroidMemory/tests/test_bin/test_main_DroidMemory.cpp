@@ -69,6 +69,10 @@ Test(Droid, test_construction_copyConstructor, .init = redirect_all_stdout)
     cr_assert_str_eq(droid.getStatus()->c_str(), "Pending by"); //std::string *
     cr_assert_str_eq(copyDroid.getStatus()->c_str(), "Pending by");
 
+
+    // std::cout   << "Exp = " << copyDroid.getBattleData()->getExp() 
+    //             << " And FingerPrint = " << copyDroid.getBattleData()->getFingerPrint()
+    //             << std::endl;
     cr_assert_stdout_eq_str("Droid '' Activated\nDroid '' Activated, Memory Dumped\n");
 }
 

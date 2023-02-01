@@ -12,10 +12,11 @@ Droid::Droid(std::string Id) :  _Id(Id),
 }
 
 Droid::Droid(const Droid &copyDroid) :  _Id(copyDroid._Id),
-                                        _Energy(copyDroid._Energy),
+                                        _Energy(50),
                                         _Attack(copyDroid._Attack),
                                         _Toughness(copyDroid._Toughness),
-                                        _Status(std::make_unique<std::string>(*copyDroid._Status))//_Status(new std::string(*copyDroid._Status))
+                                        _Status(std::make_unique<std::string>(*copyDroid._Status)),
+                                        BattleData(std::make_unique<DroidMemory>())//_Status(new std::string(*copyDroid._Status))
 {
     std::cout << "Droid '" << copyDroid._Id << "' Activated, Memory Dumped" << std::endl;
 }
@@ -76,6 +77,7 @@ Droid           &Droid::operator=(const Droid &rhs)
         _Id = rhs._Id;
         _Energy = rhs._Energy;
         _Status = std::make_unique<std::string>(*rhs._Status);
+        BattleData = std::make_unique<DroidMemory>(*rhs.BattleData);
     }
     return *this;
 }
