@@ -3,6 +3,50 @@
 
 #include <iostream>
 
+static void testMemory()
+{
+    DroidMemory mem1;
+    mem1 += 42;
+    std::cout << mem1 << std::endl;
+    DroidMemory mem2;
+    mem2 << mem1;
+    mem2 >> mem1;
+    mem2 << mem1;
+    std::cout << mem2 << std::endl;
+    std::cout << mem1 << std::endl;
+
+    DroidMemory mem3 = mem1;
+    DroidMemory mem4;
+    mem4 = mem1 + mem3;
+}
+
+static void testDroid()
+{
+    Droid d("rudolf");
+    Droid d2("gaston");
+    size_t DuraSell = 40;
+
+    d << DuraSell ;
+    d.setStatus(new std::string("having some reset"));
+    d2.setStatus( new std::string("having some reset"));
+
+    if (d2 != d && !(d == d2))
+    {
+        std::cout << "a droid is a droid, all its matter is what it 's doing" << std::endl;
+    }
+    d(new std::string("take a coffee"), 20);
+    std::cout << d << std::endl;
+    while (d(new std::string("Patrol around"), 20))
+    {
+        if (!d(new std::string("Shoot some ennemies"), 50))
+        {
+            d(new std::string("Run Away"), 20);
+        }
+        std::cout << d << std::endl;
+    }
+    std::cout << d << std::endl;
+}
+
 int     main(void)
 {
     // Droid   droid;
@@ -59,106 +103,108 @@ int     main(void)
     // copyDroid_param.~Droid();
     // std::cout << std::endl;
 
-    DroidMemory     droidMemory;
+    // DroidMemory     droidMemory;
 
-    std::cout << "droidMemory.getFingerPrint = ";
-    std::cout << droidMemory.getFingerPrint() << std::endl;
-    std::cout << "droidMemory.getExp = ";
-    std::cout << droidMemory.getExp() << std::endl;
+    // std::cout << "droidMemory.getFingerPrint = ";
+    // std::cout << droidMemory.getFingerPrint() << std::endl;
+    // std::cout << "droidMemory.getExp = ";
+    // std::cout << droidMemory.getExp() << std::endl;
 
-    droidMemory.setFingerPrint(1);
-    std::cout << "droidMemory.getFingerPrint after droidMemory.setFingerPrint = ";
-    std::cout << droidMemory.getFingerPrint() << std::endl;
-    droidMemory.setExp(1);
-    std::cout << "droidMemory.getExp after droidMemory.setExp = ";
-    std::cout << droidMemory.getExp() << std::endl;
+    // droidMemory.setFingerPrint(1);
+    // std::cout << "droidMemory.getFingerPrint after droidMemory.setFingerPrint = ";
+    // std::cout << droidMemory.getFingerPrint() << std::endl;
+    // droidMemory.setExp(1);
+    // std::cout << "droidMemory.getExp after droidMemory.setExp = ";
+    // std::cout << droidMemory.getExp() << std::endl;
 
-    droidMemory << droidMemory;
-    std::cout << "droidMemory.getExp after stream insetertion operator<< = " << droidMemory.getExp() << std::endl;
-    std::cout << droidMemory << std::endl;
+    // droidMemory << droidMemory;
+    // std::cout << "droidMemory.getExp after stream insetertion operator<< = " << droidMemory.getExp() << std::endl;
+    // std::cout << droidMemory << std::endl;
 
-    droidMemory >> droidMemory;
-    std::cout << "droidMemory.getExp after stream insetertion operator>> = " << droidMemory.getExp() << std::endl;
-    std::cout << droidMemory << std::endl;
+    // droidMemory >> droidMemory;
+    // std::cout << "droidMemory.getExp after stream insetertion operator>> = " << droidMemory.getExp() << std::endl;
+    // std::cout << droidMemory << std::endl;
 
-    droidMemory += droidMemory;
-    std::cout << "droidMemory.getExp after operator+= = " << droidMemory.getExp() << std::endl;
-    droidMemory += 1;
-    std::cout << "droidMemory.getExp after operator+= size_t = " << droidMemory.getExp() << std::endl;
+    // droidMemory += droidMemory;
+    // std::cout << "droidMemory.getExp after operator+= = " << droidMemory.getExp() << std::endl;
+    // droidMemory += 1;
+    // std::cout << "droidMemory.getExp after operator+= size_t = " << droidMemory.getExp() << std::endl;
 
 
-    droidMemory = droidMemory + droidMemory;
-    std::cout << "droidMemory.getExp after operator+   = " << droidMemory.getExp() << std::endl;
-    droidMemory = droidMemory + 1;
-    std::cout << "droidMemory.getExp after operator+ size_t = " << droidMemory.getExp() << std::endl;
+    // droidMemory = droidMemory + droidMemory;
+    // std::cout << "droidMemory.getExp after operator+   = " << droidMemory.getExp() << std::endl;
+    // droidMemory = droidMemory + 1;
+    // std::cout << "droidMemory.getExp after operator+ size_t = " << droidMemory.getExp() << std::endl;
 
-    std::cout << "DroidMemory BattleData created during Droid construction :";
-    Droid           droid("Avenger");
-    std::cout   << "droid.getBattleData()->getExp() Exp = " 
-                << droid.getBattleData()->getExp() 
-                << " And droid.getBattleData()->getFingerPrint() FingerPrint = " 
-                << droid.getBattleData()->getFingerPrint()
-                << std::endl;
-    droid.~Droid();
+    // std::cout << "DroidMemory BattleData created during Droid construction :";
+    // Droid           droid("Avenger");
+    // std::cout   << "droid.getBattleData()->getExp() Exp = " 
+    //             << droid.getBattleData()->getExp() 
+    //             << " And droid.getBattleData()->getFingerPrint() FingerPrint = " 
+    //             << droid.getBattleData()->getFingerPrint()
+    //             << std::endl;
+    // droid.~Droid();
 
-    DroidMemory     droidMemory2;
-    droidMemory2 = droidMemory;
-    if (droidMemory2 == droidMemory)
-        std::cout << "droidMemory2 == droidMemory = true" << std::endl;
-    else
-        std::cout << "droidMemory2 == droidMemory = false" << std::endl;
-    droidMemory2.setExp(0);
+    // DroidMemory     droidMemory2;
+    // droidMemory2 = droidMemory;
+    // if (droidMemory2 == droidMemory)
+    //     std::cout << "droidMemory2 == droidMemory = true" << std::endl;
+    // else
+    //     std::cout << "droidMemory2 == droidMemory = false" << std::endl;
+    // droidMemory2.setExp(0);
 
-    if (droidMemory2 != droidMemory)
-        std::cout << "droidMemory2 != droidMemory = true" << std::endl;
-    else
-        std::cout << "droidMemory2 != droidMemory = false" << std::endl;
+    // if (droidMemory2 != droidMemory)
+    //     std::cout << "droidMemory2 != droidMemory = true" << std::endl;
+    // else
+    //     std::cout << "droidMemory2 != droidMemory = false" << std::endl;
 
-    if (droidMemory2 < droidMemory)
-        std::cout << "droidMemory2 < droidMemory = true" << std::endl;
-    else
-        std::cout << "droidMemory2 < droidMemory = false" << std::endl;
+    // if (droidMemory2 < droidMemory)
+    //     std::cout << "droidMemory2 < droidMemory = true" << std::endl;
+    // else
+    //     std::cout << "droidMemory2 < droidMemory = false" << std::endl;
 
-    if (droidMemory > droidMemory2)
-        std::cout << "droidMemory > droidMemory2 = true" << std::endl;
-    else
-        std::cout << "droidMemory > droidMemory2 = false" << std::endl;
+    // if (droidMemory > droidMemory2)
+    //     std::cout << "droidMemory > droidMemory2 = true" << std::endl;
+    // else
+    //     std::cout << "droidMemory > droidMemory2 = false" << std::endl;
 
-    if (droidMemory2 < droidMemory)
-        std::cout << "droidMemory2 <= droidMemory = true" << std::endl;
-    else
-        std::cout << "droidMemory2 <= droidMemory = false" << std::endl;
+    // if (droidMemory2 < droidMemory)
+    //     std::cout << "droidMemory2 <= droidMemory = true" << std::endl;
+    // else
+    //     std::cout << "droidMemory2 <= droidMemory = false" << std::endl;
 
-    if (droidMemory >= droidMemory2)
-        std::cout << "droidMemory >= droidMemory2 = true" << std::endl;
-    else
-        std::cout << "droidMemory >= droidMemory2 = false" << std::endl;
+    // if (droidMemory >= droidMemory2)
+    //     std::cout << "droidMemory >= droidMemory2 = true" << std::endl;
+    // else
+    //     std::cout << "droidMemory >= droidMemory2 = false" << std::endl;
 
-    Droid d("rudolf");
-    Droid d2("gaston");
-    size_t DuraSell = 40;
+    // Droid d("rudolf");
+    // Droid d2("gaston");
+    // size_t DuraSell = 40;
 
-    d << DuraSell ;
-    d.setStatus(new std::string("having some reset"));
-    d2.setStatus( new std::string("having some reset"));
+    // d << DuraSell ;
+    // d.setStatus(new std::string("having some reset"));
+    // d2.setStatus( new std::string("having some reset"));
 
-    if (d2 != d && !(d == d2))
-        std::cout << "a droid is a droid, all its matter is what it 's doing" << std::endl;
-    d(new std::string( "take a coffee"), 20);
-    std::cout << d << std::endl;
+    // if (d2 != d && !(d == d2))
+    //     std::cout << "a droid is a droid, all its matter is what it 's doing" << std::endl;
+    // d(new std::string( "take a coffee"), 20);
+    // std::cout << d << std::endl;
     std::cout << "REAL DROIDMEMORY MAIN :" << std::endl;
-    DroidMemory     mem1;
-    mem1 += 42;
+    testMemory();
+    testDroid();
+    // DroidMemory     mem1;
+    // mem1 += 42;
 
-    DroidMemory mem2 = mem1;
-    std::cout << mem1 << std::endl;
+    // DroidMemory mem2 = mem1;
+    // std::cout << mem1 << std::endl;
 
-    DroidMemory mem3;
-    mem3 << mem1;
-    mem3 >> mem1;
-    mem3 << mem1;
-    std::cout << mem3 << std::endl;
-    std::cout << mem1 << std::endl;
+    // DroidMemory mem3;
+    // mem3 << mem1;
+    // mem3 >> mem1;
+    // mem3 << mem1;
+    // std::cout << mem3 << std::endl;
+    // std::cout << mem1 << std::endl;
     
     return 0;
 }

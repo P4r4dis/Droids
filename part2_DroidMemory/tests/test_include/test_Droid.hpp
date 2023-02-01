@@ -50,5 +50,4 @@ class   Droid
 
 std::ostream                &operator<<(std::ostream& os, const Droid& rhs);
 
-
 #endif //   !__TEST_DROID__

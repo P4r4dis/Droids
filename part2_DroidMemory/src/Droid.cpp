@@ -125,7 +125,7 @@ bool            Droid::operator()(const std::string *Status, size_t Exp)
     {
         _Energy = 0;
         _Status = std::make_unique<std::string>("Battery Low");
-        BattleData->setExp(Exp);
+        // BattleData->setExp(Exp);
         return false;
     }
     else if (_Energy >= 10 && BattleData->getExp() >= Exp)

@@ -135,7 +135,7 @@ Test(Droid, test_overload_stream_insertion_operator_reload_Energy, .init = redir
     std::cout << d << "--" << Durasel << std::endl;
 }
 
-Test(Droid, test_overload_operator_parenthesis)
+Test(Droid, test_overload_operator_parenthesis, .init = redirect_all_stdout)
 {
     Droid d("rudolf");
     Droid d2("gaston");
@@ -183,8 +183,44 @@ Droid 'Avenger' Destroyed\n\
 Droid 'Rex' Destroyed\n");
 }
 
+Test(Droid, test_main_part2, .init = redirect_all_stdout)
+{
+    Droid d("rudolf");
+    Droid d2("gaston");
+    size_t DuraSell = 40;
 
+    d << DuraSell;
+    d.setStatus(new std::string("having some reset"));
+    d2.setStatus( new std::string("having some reset"));
 
+    if (d2 != d && !(d == d2))
+    {
+        std::cout << "a droid is a droid, all its matter is what it 's doing" << std::endl;
+    }
+    d(new std::string("take a coffee"), 20);
+    std::cout << d << std::endl;
+    while (d(new std::string("Patrol around"), 20))
+    {
+        if (!d(new std::string("Shoot some ennemies"), 50))
+        {
+            d(new std::string("Run Away"), 20);
+        }
+        std::cout << d << std::endl;
+    }
+    std::cout << d << std::endl;
+
+    d2.~Droid();
+    d.~Droid();
+    cr_assert_stdout_eq_str("Droid 'rudolf' Activated\n\
+Droid 'gaston' Activated\n\
+Droid 'rudolf', take a coffee - Failed!, 80\n\
+Droid 'rudolf', Run Away - Completed!, 50\n\
+Droid 'rudolf', Shoot some ennemies - Completed!, 30\n\
+Droid 'rudolf', Shoot some ennemies - Completed!, 10\n\
+Droid 'rudolf', Battery Low, 0\n\
+Droid 'gaston' Destroyed\n\
+Droid 'rudolf' Destroyed\n");
+}
 
 Test(DroidMemory, test_DroidMemory_Construction)
 {
@@ -349,6 +385,26 @@ Test(DroidMemory, test_DroidMemory_main, .init = redirect_all_stdout)
     mem3 << mem1;
     std::cout << mem3 << std::endl;
     std::cout << mem1 << std::endl;
+    cr_assert_stdout_eq_str("DroidMemory '1804289357', 42\n\
+DroidMemory '1804289357', 126\n\
+DroidMemory '846930886', 84\n");
+}
+
+Test(DroidMemory, test_DroidMemory_main2, .init = redirect_all_stdout)
+{
+    DroidMemory mem1;
+    mem1 += 42;
+    std::cout << mem1 << std::endl;
+    DroidMemory mem2;
+    mem2 << mem1;
+    mem2 >> mem1;
+    mem2 << mem1;
+    std::cout << mem2 << std::endl;
+    std::cout << mem1 << std::endl;
+
+    DroidMemory mem3 = mem1;
+    DroidMemory mem4;
+    mem4 = mem1 + mem3;
     cr_assert_stdout_eq_str("DroidMemory '1804289357', 42\n\
 DroidMemory '1804289357', 126\n\
 DroidMemory '846930886', 84\n");
