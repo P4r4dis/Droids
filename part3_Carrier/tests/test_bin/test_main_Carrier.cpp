@@ -410,3 +410,45 @@ Test(DroidMemory, test_DroidMemory_main2, .init = redirect_all_stdout)
 DroidMemory '1804289357', 126\n\
 DroidMemory '846930886', 84\n");
 }
+
+Test(Carrier, test_Carrier_construction)
+{
+    Carrier     carrier("HellExpress");
+
+    cr_assert(carrier.getId() == "HellExpress");
+    carrier.setId("H");
+    cr_assert(carrier.getId() == "H");
+
+    cr_assert(carrier.getEnergy() == 300);
+    carrier.setEnergy(0);
+    cr_assert(carrier.getEnergy() == 0);
+
+    cr_assert(carrier.getAttack() == 100);
+    cr_assert(carrier.getToughness() == 90);
+    cr_assert(carrier.getSpeed() == 0);
+    carrier.setSpeed(100);
+    cr_assert(carrier.getSpeed() == 100);
+
+    cr_assert_eq(carrier.getDroids(0), nullptr);
+    cr_assert(carrier.getDroids(1) == nullptr);
+    cr_assert(carrier.getDroids(2) == nullptr);
+    cr_assert(carrier.getDroids(3) == nullptr);
+    std::shared_ptr<Droid> droid = std::make_shared<Droid>("TEST");
+    carrier.setDroids(4, droid);
+    cr_assert(carrier.getDroids(4) != nullptr);
+    cr_assert(carrier.getDroids(4)->getId() == "TEST");
+    std::cout << carrier.getSpeed() << std::endl;
+
+    Carrier     carrier2;
+
+    cr_assert(carrier2.getId() == "");
+    cr_assert(carrier2.getEnergy() == 300);
+    cr_assert(carrier2.getAttack() == 100);
+    cr_assert(carrier2.getToughness() == 90);
+    cr_assert(carrier2.getSpeed() == 0);
+    cr_assert(carrier2.getDroids(0) == nullptr);
+    cr_assert(carrier2.getDroids(1) == nullptr);
+    cr_assert(carrier2.getDroids(2) == nullptr);
+    cr_assert(carrier2.getDroids(3) == nullptr);
+    cr_assert(carrier2.getDroids(4) == nullptr);
+}
