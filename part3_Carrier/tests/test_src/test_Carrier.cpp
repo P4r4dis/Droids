@@ -63,12 +63,12 @@ void                    Carrier::setSpeed(size_t Speed)
     _Speed = Speed;
 }
 
-void                    Carrier::setDroids(int i, std::shared_ptr<Droid> Droids)
+void                    Carrier::setDroids(int i, Droid *Droids)
 {
     size_t nbDroid;
 
     nbDroid = 0;
-    _Droids[i] = Droids;
+    _Droids[i] = std::shared_ptr<Droid>(Droids);
     if (Droids)
     {
         for(int j = 0; j < 5; j++)

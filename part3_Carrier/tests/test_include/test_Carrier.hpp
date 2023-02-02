@@ -28,7 +28,7 @@ class   Carrier
         void                    setId(std::string Id);
         void                    setEnergy(size_t Energy);
         void                    setSpeed(size_t Speed);
-        void                    setDroids(int i, std::shared_ptr<Droid> Droids);
+        void                    setDroids(int i, Droid *droid);
 };
 
 #endif //   !__TEST_CARRIER__

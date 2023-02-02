@@ -433,7 +433,7 @@ Test(Carrier, test_Carrier_construction)
     cr_assert(carrier.getDroids(1) == nullptr);
     cr_assert(carrier.getDroids(2) == nullptr);
     cr_assert(carrier.getDroids(3) == nullptr);
-    std::shared_ptr<Droid> droid = std::make_shared<Droid>("TEST");
+    Droid *droid = new Droid("TEST");
     carrier.setDroids(4, droid);
     cr_assert(carrier.getDroids(4) != nullptr);
     cr_assert(carrier.getDroids(4)->getId() == "TEST");
