@@ -25,6 +25,7 @@ class   Carrier
         Carrier                 &operator>>(Droid *&rhs);
         Droid                   *&operator[](const size_t index);
         Carrier                 &operator~();
+        bool                    operator()(int x, int y);
     private:
         std::string             _Id;
         size_t                  _Energy;

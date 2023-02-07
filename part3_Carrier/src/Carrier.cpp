@@ -170,3 +170,18 @@ Carrier                 &Carrier::operator~()
 
     return *this;
 }
+
+bool                    Carrier::operator()(int x, int y)
+{
+    size_t  NbDroid = 0;
+    size_t  EnergyCost = 0;
+
+    for (int i = 0; i < 5; i++)
+        if (_Droids[i])
+            NbDroid++;
+    EnergyCost = (abs(x) + abs(y)) * (10 + NbDroid);
+    if (_Energy < EnergyCost || _Speed == 0)
+        return false;
+    _Energy -= EnergyCost;
+    return true;
+}
