@@ -77,6 +77,9 @@ int     main(void)
     c << d1 << d2 << d3 << d4 << d5;
     std::cout << c.getSpeed() << d1 << std::endl;
     std::cout << c << std::endl;
-
+    std::cout << "Overloading of >> operator = ";
+    c >> d1 >> d2 >> d3;
+    std::cout << c.getSpeed() << std::endl;
+    std::cout << c << std::endl;
     return 0;
 }

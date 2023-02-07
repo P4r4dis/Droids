@@ -122,3 +122,26 @@ std::ostream            &operator<<(std::ostream &os, const Carrier &rhs)
     
     return os;
 }
+
+Carrier                 &Carrier::operator>>(Droid  *&lhs)
+{
+    size_t nbDroids = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (_Droids[i] != nullptr)
+        {
+            _Droids[i] = nullptr;//std::shared_ptr<Droid>(lhs);
+            for (int j = 0; j < 5; j++)
+                if(_Droids[j] != nullptr)
+                    nbDroids++;
+
+            _Speed = 100 - (nbDroids * 10);
+            lhs = nullptr;
+
+             return *this;
+        }
+    }
+    
+    return *this;
+}
