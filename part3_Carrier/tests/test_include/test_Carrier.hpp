@@ -3,6 +3,8 @@
 
 #include <string>
 #include <memory>
+#include <ostream>
+
 #include "test_Droid.hpp"
 class   Carrier
 {
@@ -18,17 +20,21 @@ class   Carrier
         Carrier(std::string Id = "");
         ~Carrier(void);
 
-        std::string             getId(void);
-        size_t                  getEnergy(void);
+        std::string             getId(void) const;
+        size_t                  getEnergy(void) const;
         size_t                  getAttack(void) const;
         size_t                  getToughness(void) const;
-        size_t                  getSpeed(void);
-        std::shared_ptr<Droid>  getDroids(int i);
+        size_t                  getSpeed(void) const;
+        std::shared_ptr<Droid>  getDroids(int i) const;
 
         void                    setId(std::string Id);
         void                    setEnergy(size_t Energy);
         void                    setSpeed(size_t Speed);
         void                    setDroids(int i, Droid *droid);
+
+        Carrier                 &operator<<(Droid *&rhs);
 };
+
+        std::ostream            &operator<<(std::ostream &os, const Carrier &rhs);
 
 #endif //   !__TEST_CARRIER__

@@ -411,7 +411,7 @@ DroidMemory '1804289357', 126\n\
 DroidMemory '846930886', 84\n");
 }
 
-Test(Carrier, test_Carrier_construction)
+Test(Carrier, test_Carrier_construction, .init = redirect_all_stdout)
 {
     Carrier     carrier("HellExpress");
 
@@ -451,4 +451,42 @@ Test(Carrier, test_Carrier_construction)
     cr_assert(carrier2.getDroids(2) == nullptr);
     cr_assert(carrier2.getDroids(3) == nullptr);
     cr_assert(carrier2.getDroids(4) == nullptr);
+}
+
+Test(Carrier, test_Carrier_stream_insertion_rhs)
+{
+    Carrier     c("HellExpress");
+
+    Droid *d1 = new Droid("Commander");
+    Droid *d2 = new Droid("Sergent");
+    Droid *d3 = new Droid("Troufiont");
+    Droid *d4 = new Droid("Groupie");
+    Droid *d5 = new Droid("BeerHolder");
+
+    cr_assert(c.getSpeed() == 0);
+
+    cr_assert(c.getDroids(0) == nullptr);
+    cr_assert(c.getDroids(1) == nullptr);
+    cr_assert(c.getDroids(2) == nullptr);
+    cr_assert(c.getDroids(3) == nullptr);
+    cr_assert(c.getDroids(4) == nullptr);
+
+    // c << d1 << d4 << d5;
+    c << d1 << d2 << d3 << d4 << d5;
+
+    // cr_assert(c.getDroids(0) != nullptr);
+    // cr_assert(c.getDroids(1) != nullptr);
+    // cr_assert(c.getDroids(2) != nullptr);
+    // cr_assert(c.getDroids(3) != nullptr);
+    // cr_assert(c.getDroids(4) != nullptr);
+
+    // cr_assert(c.getDroids(0)->getId() == "Commander");
+    // cr_assert(c.getDroids(1)->getId() == "Sergent");
+    // cr_assert(c.getDroids(2)->getId() == "Troufiont");
+    // cr_assert(c.getDroids(3)->getId() == "Groupie");
+    // cr_assert(c.getDroids(4)->getId() == "BeerHolder");
+
+    // cr_assert(c.getSpeed() == 50);
+    std::cout << c.getSpeed() << d1 << std::endl;
+    std::cout << c << std::endl;
 }
