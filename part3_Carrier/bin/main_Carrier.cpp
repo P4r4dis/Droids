@@ -63,6 +63,20 @@ int     main(void)
     }
 
     std::cout   << "carrier.getSpeed after Droids in  at board = "
-                << carrier.getSpeed() << std::endl;   
+                << carrier.getSpeed() << std::endl;
+
+    Carrier     c("HellExpress");
+
+    Droid *d1 = new Droid("Commander");
+    Droid *d2 = new Droid("Sergent");
+    Droid *d3 = new Droid("Troufiont");
+    Droid *d4 = new Droid("Groupie");
+    Droid *d5 = new Droid("BeerHolder");
+
+    std::cout << "Overloading of << operator = ";
+    c << d1 << d2 << d3 << d4 << d5;
+    std::cout << c.getSpeed() << d1 << std::endl;
+    std::cout << c << std::endl;
+
     return 0;
 }
