@@ -33,6 +33,7 @@ class   Carrier
         void                    setDroids(int i, Droid *droid);
 
         Carrier                 &operator<<(Droid *&rhs);
+        Carrier                 &operator>>(Droid *&rhs);
 };
 
         std::ostream            &operator<<(std::ostream &os, const Carrier &rhs);
