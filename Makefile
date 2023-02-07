@@ -46,15 +46,18 @@ PART3_SRC_TEST			=	$(PART3_TST_PATH)/$(NAME_CARRIER)_test.cpp
 TEST_NAME_CARRIER 		= 	test_$(NAME_CARRIER)
 
 ###############################################
-# PART4_PATH 				= 	./part4_g-squad
-# PART4_SRC_PATH			=	./part4_g-squad/src
-# PART4_TST_PATH			=	./part4_g-squad/tests
-# PART4_INC_PATH			=	./part4_g-squad/include
-# NAME_GSQUAD				=	G-Squad
-# PART4_SRC				=	$(PART4_SRC_PATH)/Squad.cpp
+PART4_PATH 				= 	./part4_Supply
+PART4_SRC_PATH			=	./part4_Supply/src
+PART4_TST_PATH			=	./part4_Supply/tests
+PART4_INC_PATH			=	./part4_Supply/include
+NAME_SUPPLY				=	Supply
+PART4_SRC				=	$(PART4_SRC_PATH)/Supply.cpp \
+							$(PART4_SRC_PATH)/Carrier.cpp \
+							$(PART4_SRC_PATH)/DroidMemory.cpp \
+							$(PART4_SRC_PATH)/Droid.cpp
 
-# PART4_SRC_TEST			=	$(PART4_TST_PATH)/$(NAME_GSQUAD)_test.cpp
-# TEST_NAME_GSQUAD		= 	test_$(NAME_GSQUAD)
+PART4_SRC_TEST			=	$(PART4_TST_PATH)/$(NAME_SUPPLY)_test.cpp
+TEST_NAME_SUPPLY		= 	test_$(NAME_SUPPLY)
 
 ###############################################
 
@@ -67,7 +70,7 @@ INCFLAGS				+=	-I $(PART0_INC_PATH)
 
 CPPFLAGS				+= 	-Wall -Wextra -Werror $(INCFLAGS)#-W -std=c++1z
 
-SRCS 					= 	$(PART3_SRC) \
+SRCS 					= 	$(PART4_SRC) \
 							$(BIN_PATH)/main.cpp
 
 OBJS					=	$(SRCS:.cpp=.o)
@@ -87,7 +90,7 @@ clean					:
 							@$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
-# @$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART5_TST_PATH)
 
 
@@ -101,8 +104,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART2_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART3_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART3_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART4_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART4_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART5_TST_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART5_PATH)
 
@@ -124,9 +127,9 @@ part3 					: 	fclean
 							@$(MAKE) -C $(PART3_PATH)
 							$(PART3_PATH)/$(NAME_CARRIER)
 
-# part4 					: 	fclean
-# 							@$(MAKE) -C $(PART4_PATH)
-# 							$(PART4_PATH)/$(NAME_GSQUAD)
+part4 					: 	fclean
+							@$(MAKE) -C $(PART4_PATH)
+							$(PART4_PATH)/$(NAME_SUPPLY)
 
 tests_run_part0			:	fclean
 							@$(MAKE) -C $(PART0_TST_PATH)
@@ -144,16 +147,16 @@ tests_run_part3			:	fclean
 							@$(MAKE) -C $(PART3_TST_PATH)
 							$(PART3_TST_PATH)/$(TEST_NAME_CARRIER)
 
-# tests_run_part4			:	fclean
-# 							@$(MAKE) -C $(PART4_TST_PATH)
-# 							$(PART4_TST_PATH)/$(TEST_NAME_GSQUAD)
+tests_run_part4			:	fclean
+							@$(MAKE) -C $(PART4_TST_PATH)
+							$(PART4_TST_PATH)/$(TEST_NAME_SUPPLY)
 
 tests_run				:	fclean
 							@$(MAKE) tests_run_part0
 							@$(MAKE) tests_run_part1
 							@$(MAKE) tests_run_part2
 							@$(MAKE) tests_run_part3
-# @$(MAKE) tests_run_part4
+							@$(MAKE) tests_run_part4
 
 
 .PHONY					: 	all clean fclean re part0 tests_run_part0 part1 tests_run_part1 part2 tests_run_part2 part3 tests_run_part3 tests_run
