@@ -543,7 +543,7 @@ Test(Carrier, test_Carrier_subscript_operator, .init = redirect_all_stdout)
     std::cout << c << std::endl;
 }
 
-Test(Carrier, test_Carrier_bitwise_operator)
+Test(Carrier, test_Carrier_bitwise_operator, .init = redirect_all_stdout)
 {
     Carrier     c("HellExpress");
 
@@ -559,5 +559,28 @@ Test(Carrier, test_Carrier_bitwise_operator)
     std::cout << c.getSpeed() << std::endl;
     c[0] = d1;
     std::cout << (~c).getSpeed() << std::endl;
+    std::cout << c << std::endl;
+}
+
+Test(Carrier, test_Carrier_parenthesis_operator)
+{
+    Carrier     c("HellExpress");
+
+    Droid *d1 = new Droid("Commander");
+    Droid *d2 = new Droid("Sergent");
+    Droid *d3 = new Droid("Troufiont");
+    Droid *d4 = new Droid("Groupie");
+    Droid *d5 = new Droid("BeerHolder");
+
+    c << d1 << d2 << d3 << d4 << d5;
+    std::cout << c.getSpeed() << d1 << std::endl;
+    c >> d1 >> d2 >> d3;
+    std::cout << c.getSpeed() << std::endl;
+    c[0] = d1;
+    std::cout << (~c).getSpeed() << std::endl;
+    cr_assert(c(4, 2) == true);
+    cr_assert(c(4, 2) == true);
+    cr_assert(c(4, 2) == true);
+    cr_assert(c(4, 2) == false);
     std::cout << c << std::endl;
 }
