@@ -24,6 +24,7 @@ class   Carrier
         Carrier                 &operator<<(Droid *&rhs);
         Carrier                 &operator>>(Droid *&rhs);
         Droid                   *&operator[](const size_t index);
+        Carrier                 &operator~();
     private:
         std::string             _Id;
         size_t                  _Energy;

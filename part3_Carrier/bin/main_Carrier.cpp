@@ -85,6 +85,9 @@ int     main(void)
     c[0] = d1;
     std::cout << c.getSpeed() << std::endl;
     std::cout << c << std::endl;
+    std::cout << "Overloading of ~ operator = ";
+    std::cout << (~c).getSpeed() << std::endl;
+    std::cout << c << std::endl;
     std::cout << "Carrier c after destruction = ";
     c.~Carrier();
     std::cout << c << std::endl;

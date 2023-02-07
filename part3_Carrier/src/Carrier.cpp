@@ -156,3 +156,17 @@ Droid                   *&Carrier::operator[](const size_t index)
 {
     return _Droids[index];
 }
+
+Carrier                 &Carrier::operator~()
+{
+    size_t nbDroids = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (_Droids[i] != nullptr)
+            nbDroids++;
+    }
+     _Speed = 100 - (nbDroids * 10);
+
+    return *this;
+}
