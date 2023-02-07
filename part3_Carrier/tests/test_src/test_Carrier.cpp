@@ -12,9 +12,9 @@ Carrier::Carrier(std::string Id) :  _Id(Id), _Energy(300), _Attack(100),
 Carrier::~Carrier(void)
 {
     for (int i = 0; i < 5; i++) {
-        _Droids[i] = nullptr;
         if (_Droids[i])
             delete _Droids[i];
+        _Droids[i] = nullptr;
     }
 }
 
