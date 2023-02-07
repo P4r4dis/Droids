@@ -81,5 +81,8 @@ int     main(void)
     c >> d1 >> d2 >> d3;
     std::cout << c.getSpeed() << std::endl;
     std::cout << c << std::endl;
+    std::cout << "Carrier c after destruction = ";
+    c.~Carrier();
+    std::cout << c << std::endl;
     return 0;
 }

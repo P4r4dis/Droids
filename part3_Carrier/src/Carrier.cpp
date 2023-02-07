@@ -11,7 +11,10 @@ Carrier::Carrier(std::string Id) :  _Id(Id), _Energy(300), _Attack(100),
 }
 
 Carrier::~Carrier(void)
-{}
+{
+    for (int i = 0; i < 5; i++)
+        _Droids[i].reset();
+}
 
 std::string             Carrier::getId(void) const
 {
