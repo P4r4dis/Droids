@@ -586,7 +586,7 @@ Test(Carrier, test_Carrier_parenthesis_operator, .init = redirect_all_stdout)
     std::cout << c << std::endl;
 }
 
-Test(Carrier, test_Carrier_main)
+Test(Carrier, test_Carrier_main, .init = redirect_all_stdout)
 {
     Carrier     c("HellExpress");
 
@@ -611,4 +611,35 @@ Test(Carrier, test_Carrier_main)
     (~c)(-15, 4);
     std::cout << c << std::endl;
     c.~Carrier();
+}
+
+Test(Supply, test_Supply_Construction)
+{
+    Droid** w = new Droid*[10];
+    char c = '0';
+    for (int i = 0; i < 3; ++i) {
+        w[i] = new Droid(std::string("wreck: ") + (char)(c + i));
+    }
+    Supply s1(Supply::Silicon, 42);
+    Supply s2(Supply::Iron, 70);
+    Supply s3(Supply::Wreck, 3, w);
+
+    cr_assert(s1.getTypes() == Supply::Silicon);
+    cr_assert(s2.getTypes() == Supply::Iron);
+    cr_assert(s3.getTypes() == Supply::Wreck);
+    s1.setTypes(Supply::Iron);
+    cr_assert(s1.getTypes() == Supply::Iron);
+
+    cr_assert(s1.getAmount() == 42);
+    s1.setAmount(5);
+    cr_assert(s1.getAmount() == 5);
+
+    cr_assert(s2.getAmount() == 70);
+    cr_assert(s3.getAmount() == 3);
+
+    cr_assert(s3.getWrecks() == w);
+
+    s1.setWrecks(w);
+    cr_assert(s1.getWrecks() == w);
+
 }
