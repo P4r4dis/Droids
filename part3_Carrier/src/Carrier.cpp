@@ -12,8 +12,11 @@ Carrier::Carrier(std::string Id) :  _Id(Id), _Energy(300), _Attack(100),
 
 Carrier::~Carrier(void)
 {
-    for (int i = 0; i < 5; i++)
-        _Droids[i].reset();
+    for (int i = 0; i < 5; i++) {
+        _Droids[i] = nullptr;
+        if (_Droids[i])
+            delete _Droids[i];
+    }
 }
 
 std::string             Carrier::getId(void) const
@@ -41,7 +44,7 @@ size_t                  Carrier::getSpeed(void) const
     return _Speed;
 }
 
-std::shared_ptr<Droid>  Carrier::getDroids(int i) const
+Droid                   *Carrier::getDroids(int i) const
 {
     return _Droids[i];
 }
@@ -66,7 +69,7 @@ void                    Carrier::setDroids(int i, Droid *Droids)
     size_t nbDroid;
 
     nbDroid = 0;
-    _Droids[i] = std::shared_ptr<Droid>(Droids);
+    _Droids[i] = Droids;
     if (Droids)
     {
         for(int j = 0; j < 5; j++)
@@ -88,7 +91,7 @@ Carrier                 &Carrier::operator<<(Droid *&rhs)
     {
         if (_Droids[i] == nullptr)
         {
-            _Droids[i] = std::shared_ptr<Droid>(rhs);
+            _Droids[i] = rhs;
             for (int j = 0; j < 5; j++)
                 if(_Droids[j] != nullptr)
                     nbDroids++;
@@ -103,7 +106,7 @@ Carrier                 &Carrier::operator<<(Droid *&rhs)
     return *this;
 }
 
-std::ostream            &operator<<(std::ostream &os, const Carrier &rhs)
+std::ostream             &operator<<(std::ostream &os, const Carrier &rhs)
 {
     std::cout   << "Carrier '" << rhs.getId() << "' Droid(s) on-board:" << std::endl;
     for (int i = 0; i < 5; i++)
@@ -122,7 +125,7 @@ std::ostream            &operator<<(std::ostream &os, const Carrier &rhs)
         std::cout << std::endl;
     }
     std::cout   << "Speed : " << rhs.getSpeed() << ", Energy " << rhs.getEnergy();
-    
+
     return os;
 }
 
@@ -134,17 +137,22 @@ Carrier                 &Carrier::operator>>(Droid  *&lhs)
     {
         if (_Droids[i] != nullptr)
         {
-            _Droids[i] = nullptr;//std::shared_ptr<Droid>(lhs);
+            lhs = _Droids[i];
+            _Droids[i] = nullptr;
             for (int j = 0; j < 5; j++)
                 if(_Droids[j] != nullptr)
                     nbDroids++;
 
             _Speed = 100 - (nbDroids * 10);
-            lhs = nullptr;
 
-             return *this;
+            return *this;
         }
     }
-    
+
     return *this;
+}
+
+Droid                   *&Carrier::operator[](const size_t index)
+{
+    return _Droids[index];
 }
