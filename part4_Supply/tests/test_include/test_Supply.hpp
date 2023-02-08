@@ -17,8 +17,11 @@ class                   Supply
         size_t          getAmount(void);
         void            setAmount(size_t Amount);
 
-        Droid           **getWrecks(void);
+        Droid           **getWrecks() const;
+        Droid           *getWrecks(int index) const;
         void            setWrecks(Droid  **Wrecks);
+
+                        operator size_t() const;
     private:
         Types           _Types;
         size_t          _Amount;

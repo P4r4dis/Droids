@@ -656,8 +656,40 @@ Test(Supply, test_Supply_stream_insertion_rhs_operator, .init = redirect_all_std
     Supply s3(Supply::Wreck, 3, w);
 
     std::cout << s3 << std::endl;
+//     cr_assert_stdout_eq_str("Droid 'wreck: 0' Activated\n
+// Droid 'wreck: 1' Activated\n
+// Droid 'wreck: 2' Activated\n
+// Supply : 3, Wreck\n");
+
     cr_assert_stdout_eq_str("Droid 'wreck: 0' Activated\n\
 Droid 'wreck: 1' Activated\n\
 Droid 'wreck: 2' Activated\n\
-Supply : 3, Wreck\n");
+Supply : 3, Wreck\n\
+Droid 'wreck: 0', Standing by, 50\n\
+Droid 'wreck: 1', Standing by, 50\n\
+Droid 'wreck: 2', Standing by, 50\n");
+}
+
+Test(Supply, test_Supply_size_t_operator, .init = redirect_all_stdout)
+{
+    Droid** w = new Droid*[10];
+    char c = '0';
+    for (int i = 0; i < 3; ++i) {
+        w[i] = new Droid(std::string("wreck: ") + (char)(c + i));
+    }
+    Supply s1(Supply::Silicon, 42);
+    Supply s2(Supply::Iron, 70);
+    Supply s3(Supply::Wreck, 3, w);
+
+    std::cout << s3 << std::endl;
+    size_t s = s2;
+    std::cout << s << std::endl;
+    cr_assert_stdout_eq_str("Droid 'wreck: 0' Activated\n\
+Droid 'wreck: 1' Activated\n\
+Droid 'wreck: 2' Activated\n\
+Supply : 3, Wreck\n\
+Droid 'wreck: 0', Standing by, 50\n\
+Droid 'wreck: 1', Standing by, 50\n\
+Droid 'wreck: 2', Standing by, 50\n\
+70\n");
 }

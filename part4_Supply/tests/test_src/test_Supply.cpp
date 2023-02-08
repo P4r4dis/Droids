@@ -29,10 +29,16 @@ void                    Supply::setAmount(size_t Amount)
     _Amount = Amount;
 }
 
-Droid                   **Supply::getWrecks(void)
+Droid                   **Supply::getWrecks(void) const
 {
     return _Wrecks;
 }
+
+Droid                   *Supply::getWrecks(int index) const
+{
+    return _Wrecks[index];
+}
+
 
 void                    Supply::setWrecks(Droid **Wrecks)
 {
@@ -47,6 +53,23 @@ std::ostream            &operator<<(std::ostream &os, Supply &supply)
     else if(supply.getTypes() == 2)
         os << "Iron";
     else
-        os << "Wreck";
+        os << "Wreck" << std::endl;
+    
+    for (size_t i = 0; i < supply.getAmount(); i++)
+    {
+        if (supply.getWrecks(i))
+        {
+            os  << "Droid '" << supply.getWrecks(i)->getId() << "', " 
+                << supply.getWrecks(i)->getStatus()->data()
+                << ", " << supply.getWrecks(i)->getEnergy();
+            if (i < 2)
+                os << std::endl;
+        }
+    }
     return os;
+}
+
+Supply::operator size_t() const
+{
+    return _Amount;
 }
