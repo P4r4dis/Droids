@@ -5,7 +5,8 @@ Supply::Supply(Types Type, size_t Amount) :     _Types(Type), _Amount(Amount)
 
 Supply::Supply(Types Types, size_t Amount, Droid **Wrecks) :     _Types(Types),
                                                                 _Amount(Amount),
-                                                                _Wrecks(Wrecks)
+                                                                _Wrecks(Wrecks),
+                                                                _Index(0)
 {}
 
 Supply::Types           Supply::getTypes() const
@@ -38,6 +39,10 @@ Droid                   *Supply::getWrecks(int index) const
     return _Wrecks[index];
 }
 
+int                     Supply::getWrecksIndex(void) const
+{
+    return _Index;
+}
 
 void                    Supply::setWrecks(Droid **Wrecks)
 {
@@ -71,4 +76,18 @@ std::ostream            &operator<<(std::ostream &os, Supply &supply)
 Supply::operator size_t() const
 {
     return _Amount;
+}
+
+Droid                   *Supply::operator*(void) const
+{
+    return _Wrecks[_Index];
+}
+
+Supply                  &Supply::operator--(void)
+{
+    if (_Wrecks)
+    {
+        _Index = (_Index + _Amount) - 1;
+    }
+    return *this;
 }

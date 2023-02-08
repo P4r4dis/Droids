@@ -39,6 +39,10 @@ int     main(void)
     size_t supp = supp2;
     std::cout << supp << std::endl;  
 
+    std::cout << "overloading operator * and -- =";
+    std::cout << *(*(--supp3)) << std::endl;
+
+
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;    
     return 0;
 }
