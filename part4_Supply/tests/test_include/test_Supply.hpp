@@ -2,6 +2,7 @@
 #   define  __TEST_SUPPLY__
 
 #include "test_Droid.hpp"
+#include <ostream>
 class                   Supply
 {
     public:
@@ -23,4 +24,6 @@ class                   Supply
         size_t          _Amount;
         Droid           **_Wrecks;
 };
+        std::ostream    &operator<<(std::ostream &os, Supply &supply);
+
 #endif //   !__TEST_SUPPLY__
