@@ -35,6 +35,10 @@ int     main(void)
     std::cout << "overloading operator << =";
     std::cout << supp3 << std::endl;
 
+    std::cout << "overloading operator size_t =";
+    size_t supp = supp2;
+    std::cout << supp << std::endl;  
+
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;    
     return 0;
 }
