@@ -83,6 +83,11 @@ Droid                   *Supply::operator*(void) const
     return _Wrecks[_Index];
 }
 
+Droid                   *Supply::operator->(void) const
+{
+    return _Wrecks[_Index];
+}
+
 Supply                  &Supply::operator--(void)
 {
     if (_Wrecks)

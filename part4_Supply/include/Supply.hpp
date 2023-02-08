@@ -22,7 +22,8 @@ class                   Supply
         void            setWrecks(Droid  **Wrecks);
 
                         operator size_t() const;
-        Droid           *operator*() const ;
+        Droid           *operator*() const;
+        Droid           *operator->() const;
         Supply          &operator--();
     private:
         Types           _Types;
