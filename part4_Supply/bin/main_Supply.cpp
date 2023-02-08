@@ -32,6 +32,9 @@ int     main(void)
     std::cout << "s3.getWrecks =";
     std::cout << supp3.getWrecks() << std::endl;
 
+    std::cout << "overloading operator << =";
+    std::cout << supp3 << std::endl;
+
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;    
     return 0;
 }

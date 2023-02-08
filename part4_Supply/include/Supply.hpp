@@ -23,4 +23,6 @@ class                   Supply
         size_t          _Amount;
         Droid           **_Wrecks;
 };
+        std::ostream    &operator<<(std::ostream &os, Supply &supply);
+
 #endif //   !__SUPPLY__

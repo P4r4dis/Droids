@@ -37,3 +37,15 @@ void                    Supply::setWrecks(Droid **Wrecks)
 {
     _Wrecks = Wrecks;
 }
+
+std::ostream            &operator<<(std::ostream &os, Supply &supply)
+{
+    os << "Supply : " << supply.getAmount() << ", ";
+    if(supply.getTypes() == 1)
+        os << "Silicon";
+    else if(supply.getTypes() == 2)
+        os << "Iron";
+    else
+        os << "Wreck";
+    return os;
+}
