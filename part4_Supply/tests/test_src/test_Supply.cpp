@@ -125,3 +125,8 @@ bool                    Supply::operator==(const Types Types)
 {
     return _Types == Types;
 }
+
+bool                    Supply::operator!=(const Types Types)
+{
+    return _Types != Types;
+}

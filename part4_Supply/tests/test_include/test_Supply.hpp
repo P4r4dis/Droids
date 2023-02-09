@@ -29,7 +29,8 @@ class                   Supply
         Supply          &operator++(void);
         Supply          &operator=(const size_t rhs);
         bool            operator==(const Types Types);
-        
+        bool            operator!=(const Types Types);
+
     private:
         Types           _Types;
         size_t          _Amount;
