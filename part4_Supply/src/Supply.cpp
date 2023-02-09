@@ -119,3 +119,8 @@ Supply                  &Supply::operator=(const size_t rhs)
     _Amount = rhs;
     return *this;
 }
+
+bool                    Supply::operator==(const Types Types)
+{
+    return _Types == Types;
+}
