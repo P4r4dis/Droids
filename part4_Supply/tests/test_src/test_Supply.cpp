@@ -10,7 +10,7 @@ Supply::Supply(Types Types, size_t Amount, Droid **Wrecks) :     _Types(Types),
                                                                 _Index(0)
 {}
 
-Supply::Types           Supply::getTypes() const
+Supply::Types           Supply::getTypes(void) const
 {
     return _Types;
 }
@@ -20,7 +20,7 @@ void                    Supply::setTypes(Types Types)
     _Types = Types;
 }
 
-size_t                  Supply::getAmount(void)
+size_t                  Supply::getAmount(void) const
 {
     return _Amount;
 }
@@ -58,28 +58,33 @@ std::ostream            &operator<<(std::ostream &os, Supply &supply)
     else if(supply.getTypes() == 2)
         os << "Iron";
     else
-        os << "Wreck" << std::endl;
-    
-    for (size_t i = 0; i < supply.getAmount(); i++)
     {
-        if (supply.getWrecks(i))
+        os << "Wreck" << std::endl;
+        if (supply.getAmount() > 0)
         {
-            os  << "Droid '" << supply.getWrecks(i)->getId() << "', " 
-                << supply.getWrecks(i)->getStatus()->data()
-                << ", " << supply.getWrecks(i)->getEnergy();
-            if (i < 2)
-                os << std::endl;
+            for (size_t i = 0; i < supply.getAmount(); i++)
+            {
+                if (supply.getWrecks(i))
+                {
+                    os  << "Droid '" << supply.getWrecks(i)->getId() << "', " 
+                        << supply.getWrecks(i)->getStatus()->data()
+                        << ", " << supply.getWrecks(i)->getEnergy();
+                    if (i < 2)
+                        os << std::endl;
+                }
+            }
         }
     }
+    
     return os;
 }
 
-Supply::operator size_t() const
+                        Supply::operator size_t(void) const
 {
     return _Amount;
 }
 
-Droid                   *&Supply::operator*(void)
+Droid                   *&Supply::operator*(void) const
 {
     return _Wrecks[_Index];
 }
@@ -110,18 +115,8 @@ Supply                  &Supply::operator++(void)
     return *this;
 }
 
-Supply          &Supply::operator=(const size_t rhs)
+Supply                  &Supply::operator=(const size_t rhs)
 {
     _Amount = rhs;
     return *this;
 }
-
-Supply     &Supply::operator=(const Supply &rhs)
-{
-    _Amount = rhs._Amount;
-    return *this;
-}
-
-// Droid           &Supply::operator*(void) {
-//     return *_Wrecks[_Index];
-// }

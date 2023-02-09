@@ -14,23 +14,20 @@ class                   Supply
         Types           getTypes(void) const;
         void            setTypes(Types Types);
 
-        size_t          getAmount(void);
+        size_t          getAmount(void) const;
         void            setAmount(size_t Amount);
 
-        Droid           **getWrecks() const;
+        Droid           **getWrecks(void) const;
         Droid           *getWrecks(size_t index) const;
-    size_t              getWrecksIndex(void) const;
+        size_t          getWrecksIndex(void) const;
         void            setWrecks(Droid  **Wrecks);
 
-                        operator size_t() const;
-        Droid           *&operator*();
-        // Droid           &operator*();
-
-        Droid           *operator->() const;
-        Supply          &operator--();
-        Supply          &operator++();
+                        operator size_t(void) const;
+        Droid           *&operator*(void) const;
+        Droid           *operator->(void) const;
+        Supply          &operator--(void);
+        Supply          &operator++(void);
         Supply          &operator=(const size_t rhs);
-        Supply     &operator=(const Supply &rhs);
     private:
         Types           _Types;
         size_t          _Amount;

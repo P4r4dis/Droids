@@ -38,7 +38,7 @@ class   Droid
 
         std::string                     *getStatus(void) const;
         void                            setStatus(std::string *Status);
-        Droid& operator=(size_t value);
+        // Droid& operator=(size_t value);
         Droid                           &operator=(const Droid &rhs);
         bool                            operator==(const Droid &rhs);
         bool                            operator!=(const Droid &rhs);

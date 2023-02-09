@@ -754,5 +754,4 @@ Test(Supply, test_Supply_increment_operator)//, .init = redirect_all_stdout)
     ++s3;
     *s3 = 0;
     std::cout << *s3 << std::endl;
-    // cr_assert((*(*(s3))).getId() == )
 }

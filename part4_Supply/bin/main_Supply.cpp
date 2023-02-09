@@ -45,6 +45,14 @@ int     main(void)
     std::cout << "overloading operator -> =";
     std::cout << *(supp3)->getStatus() << std::endl;
 
+    std::cout << "overloading operator ++ and =     :";
+    ++supp3;
+    *supp3 = 0;
+    std::cout << *supp3 << std::endl;
+
+    std::cout << supp2 << std::endl;
+
+
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;    
     return 0;
 }
