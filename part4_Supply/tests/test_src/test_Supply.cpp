@@ -10,6 +10,28 @@ Supply::Supply(Types Types, size_t Amount, Droid **Wrecks) :     _Types(Types),
                                                                 _Index(0)
 {}
 
+Supply::~Supply(void)
+{
+    // operator!();
+    if (_Types == Wreck)
+    {
+        if (_Wrecks)
+        {
+            for (size_t i = 0; i < _Amount; i++)
+            {
+                if (_Wrecks[i])
+                {
+                    std::cout << "OK" << std::endl;
+                    delete _Wrecks[i];
+                    _Wrecks[i] = nullptr;
+                }
+            }
+            delete [] _Wrecks;
+            _Wrecks = nullptr;
+        }
+    }
+}
+
 Supply::Types           Supply::getTypes(void) const
 {
     return _Types;
@@ -141,6 +163,8 @@ Supply                  &Supply::operator!(void)
             _Wrecks[i] = nullptr;
         }
     }
+    delete [] _Wrecks;
+    _Wrecks = nullptr;
     _Amount = 0;
 
     return *this;
