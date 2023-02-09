@@ -35,12 +35,12 @@ Droid                   **Supply::getWrecks(void) const
     return _Wrecks;
 }
 
-Droid                   *Supply::getWrecks(int index) const
+Droid                   *Supply::getWrecks(size_t index) const
 {
     return _Wrecks[index];
 }
 
-int                     Supply::getWrecksIndex(void) const
+size_t                  Supply::getWrecksIndex(void) const
 {
     return _Index;
 }
@@ -79,7 +79,7 @@ Supply::operator size_t() const
     return _Amount;
 }
 
-Droid                   *Supply::operator*(void) const
+Droid                   *&Supply::operator*(void)
 {
     return _Wrecks[_Index];
 }
@@ -97,3 +97,31 @@ Supply                  &Supply::operator--(void)
     }
     return *this;
 }
+
+Supply                  &Supply::operator++(void)
+{
+    if (_Wrecks)
+    {
+        if (_Index == _Amount - 1)
+            _Index = 0;
+        else
+            _Index++;
+    }
+    return *this;
+}
+
+Supply          &Supply::operator=(const size_t rhs)
+{
+    _Amount = rhs;
+    return *this;
+}
+
+Supply     &Supply::operator=(const Supply &rhs)
+{
+    _Amount = rhs._Amount;
+    return *this;
+}
+
+// Droid           &Supply::operator*(void) {
+//     return *_Wrecks[_Index];
+// }

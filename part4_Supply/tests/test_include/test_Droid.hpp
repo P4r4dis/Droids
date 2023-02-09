@@ -19,6 +19,7 @@ class   Droid
         std::unique_ptr<std::string>    _Status;
         // DroidMemory         *BattleData;
         std::unique_ptr<DroidMemory>    BattleData;
+        size_t                          _Amount = 0;
         
     public:
         Droid(std::string Id); //CUSTOM CTOR
@@ -37,7 +38,7 @@ class   Droid
 
         std::string                     *getStatus(void) const;
         void                            setStatus(std::string *Status);
-
+        Droid& operator=(size_t value);
         Droid                           &operator=(const Droid &rhs);
         bool                            operator==(const Droid &rhs);
         bool                            operator!=(const Droid &rhs);

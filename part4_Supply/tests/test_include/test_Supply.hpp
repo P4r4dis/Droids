@@ -18,19 +18,24 @@ class                   Supply
         void            setAmount(size_t Amount);
 
         Droid           **getWrecks() const;
-        Droid           *getWrecks(int index) const;
-        int             getWrecksIndex(void) const;
+        Droid           *getWrecks(size_t index) const;
+    size_t              getWrecksIndex(void) const;
         void            setWrecks(Droid  **Wrecks);
 
                         operator size_t() const;
-        Droid           *operator*() const;
+        Droid           *&operator*();
+        // Droid           &operator*();
+
         Droid           *operator->() const;
         Supply          &operator--();
+        Supply          &operator++();
+        Supply          &operator=(const size_t rhs);
+        Supply     &operator=(const Supply &rhs);
     private:
         Types           _Types;
         size_t          _Amount;
         Droid           **_Wrecks;
-        int             _Index;
+        size_t          _Index;
 };
         std::ostream    &operator<<(std::ostream &os, Supply &supply);
 

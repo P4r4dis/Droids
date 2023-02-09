@@ -738,3 +738,21 @@ Test(Supply, test_Supply_Decrement_operator, .init = redirect_all_stdout)
     std::cout << *(*(--s3)) << std::endl;
     // cr_assert((*(*(s3))).getId() == )
 }
+
+Test(Supply, test_Supply_increment_operator)//, .init = redirect_all_stdout)
+{
+    Droid** w = new Droid*[10];
+    char c = '0';
+    for (int i = 0; i < 3; ++i) {
+        w[i] = new Droid(std::string("wreck: ") + (char)(c + i));
+    }
+    Supply s1(Supply::Silicon, 42);
+    Supply s2(Supply::Iron, 70);
+    Supply s3(Supply::Wreck, 3, w);
+    cr_assert(s3.getWrecksIndex() == 0);
+    std::cout << *(++s3)->getStatus() << std::endl;
+    ++s3;
+    *s3 = 0;
+    std::cout << *s3 << std::endl;
+    // cr_assert((*(*(s3))).getId() == )
+}

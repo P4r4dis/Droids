@@ -162,3 +162,9 @@ void            Droid::setBattleData(DroidMemory *droidMemory)
 {
     BattleData = std::make_unique<DroidMemory>(*droidMemory);
 }
+
+Droid &Droid::operator=(size_t value)
+{
+    _Amount = value;
+    return *this;
+}
