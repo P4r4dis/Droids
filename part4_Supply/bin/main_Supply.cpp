@@ -63,6 +63,9 @@ int     main(void)
     {
         std::cout << std::boolalpha << "supp3 != supp2 = " << (supp3 != supp2) << std::endl; 
     }
+
+    std::cout << "overloading operator! =";
+    std::cout << !supp3 << std::endl;
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;    
     return 0;
 }

@@ -1,6 +1,5 @@
 #include "../include/Supply.hpp"
 
-
 Supply::Supply(Types Type, size_t Amount) :     _Types(Type), _Amount(Amount)
 {}
 
@@ -50,7 +49,7 @@ void                    Supply::setWrecks(Droid **Wrecks)
     _Wrecks = Wrecks;
 }
 
-std::ostream            &operator<<(std::ostream &os, Supply &supply)
+std::ostream            &operator<<(std::ostream &os, const Supply &supply)
 {
     os << "Supply : " << supply.getAmount() << ", ";
     if(supply.getTypes() == 1)
@@ -59,7 +58,7 @@ std::ostream            &operator<<(std::ostream &os, Supply &supply)
         os << "Iron";
     else
     {
-        os << "Wreck" << std::endl;
+        (supply.getAmount() ==  0) ? os << "Wreck" : os << "Wreck" << std::endl;
         if (supply.getAmount() > 0)
         {
             for (size_t i = 0; i < supply.getAmount(); i++)
@@ -129,4 +128,19 @@ bool                    Supply::operator==(const Types Types)
 bool                    Supply::operator!=(const Types Types)
 {
     return _Types != Types;
+}
+
+Supply                  &Supply::operator!(void)
+{
+    if (_Types == Wreck)
+    {
+        for (size_t i = 0; i < _Amount; i++)
+        {
+            delete _Wrecks[i];
+            _Wrecks[i] = nullptr;
+        }
+    }
+    _Amount = 0;
+
+    return *this;
 }

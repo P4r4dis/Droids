@@ -30,6 +30,7 @@ class                   Supply
         Supply          &operator=(const size_t rhs);
         bool            operator==(const Types Types);
         bool            operator!=(const Types Types);
+        Supply          &operator!(void);
 
     private:
         Types           _Types;
@@ -37,6 +38,6 @@ class                   Supply
         Droid           **_Wrecks;
         size_t          _Index;
 };
-        std::ostream    &operator<<(std::ostream &os, Supply &supply);
+        std::ostream    &operator<<(std::ostream &os, const Supply &supply);
 
 #endif //   !__TEST_SUPPLY__
