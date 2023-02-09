@@ -1,5 +1,6 @@
 #include "../include/Supply.hpp"
 
+
 Supply::Supply(Types Type, size_t Amount) :     _Types(Type), _Amount(Amount)
 {}
 
@@ -123,4 +124,9 @@ Supply                  &Supply::operator=(const size_t rhs)
 bool                    Supply::operator==(const Types Types)
 {
     return _Types == Types;
+}
+
+bool                    Supply::operator!=(const Types Types)
+{
+    return _Types != Types;
 }
