@@ -815,7 +815,7 @@ Test(Supply, test_Supply_not_operator, .init = redirect_all_stdout)
     }
 }
 
-Test(Supply, test_Supply_destruction)//, .init = redirect_all_stdout)
+Test(Supply, test_Supply_destruction, .init = redirect_all_stdout)
 {
     Droid** w = new Droid*[10];
     char c = '0';
@@ -843,3 +843,44 @@ Test(Supply, test_Supply_destruction)//, .init = redirect_all_stdout)
         cr_assert(s3.getWrecks(i) == nullptr);
     }
 }
+
+
+Test(Supply, test_Supply_main, .init = redirect_all_stdout)
+{
+    Droid** w = new Droid*[10];
+    char c = '0';
+    for (int i = 0; i < 3; ++i) {
+        w[i] = new Droid(std::string("wreck: ") + (char)(c + i));
+    }
+    Supply s1(Supply::Silicon, 42);
+    Supply s2(Supply::Iron, 70);
+    Supply s3(Supply::Wreck, 3, w);
+
+    std::cout << s3 << std::endl;
+    size_t s = s2;
+    std::cout << s << std::endl;
+    std::cout << *(*(--s3)) << std::endl;
+    std::cout << *(++s3)->getStatus() << std::endl;
+    ++s3;
+    *s3 = 0;
+    std::cout << *s3 << std::endl;
+    std::cout << s2 << std::endl;
+    std::cout << !s3 << std::endl;
+
+    cr_assert_stdout_eq_str("Droid 'wreck: 0' Activated\n\
+Droid 'wreck: 1' Activated\n\
+Droid 'wreck: 2' Activated\n\
+Supply : 3, Wreck\n\
+Droid 'wreck: 0', Standing by, 50\n\
+Droid 'wreck: 1', Standing by, 50\n\
+Droid 'wreck: 2', Standing by, 50\n\
+70\n\
+Droid 'wreck: 2', Standing by, 50\n\
+Standing by\n\
+0\n\
+Supply : 70, Iron\n\
+Droid 'wreck: 0' Destroyed\n\
+Droid 'wreck: 2' Destroyed\n\
+Supply : 0, Wreck\n");
+}
+

@@ -74,9 +74,9 @@ std::ostream            &operator<<(std::ostream &os, const Supply &supply)
 {
     os << "Supply : " << supply.getAmount() << ", ";
     if(supply.getTypes() == 1)
-        os << "Silicon";
-    else if(supply.getTypes() == 2)
         os << "Iron";
+    else if(supply.getTypes() == 2)
+        os << "Silicon";
     else
     {
         (supply.getAmount() ==  0) ? os << "Wreck" : os << "Wreck" << std::endl;
