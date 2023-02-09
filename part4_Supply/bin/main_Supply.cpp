@@ -66,6 +66,9 @@ int     main(void)
 
     std::cout << "overloading operator! =";
     std::cout << !supp3 << std::endl;
+
+    std::cout << "Destructor :" << std::endl;
+    supp3.~Supply(); 
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;    
     return 0;
 }

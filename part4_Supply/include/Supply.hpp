@@ -9,6 +9,7 @@ class                   Supply
 
         Supply(Types Types, size_t Amount);
         Supply(Types Types, size_t Amount, Droid **Wrecks);
+        ~Supply(void);
 
         Types           getTypes(void) const;
         void            setTypes(Types Types);

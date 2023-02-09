@@ -12,7 +12,6 @@ Supply::Supply(Types Types, size_t Amount, Droid **Wrecks) :     _Types(Types),
 
 Supply::~Supply(void)
 {
-    // operator!();
     if (_Types == Wreck)
     {
         if (_Wrecks)
@@ -21,7 +20,6 @@ Supply::~Supply(void)
             {
                 if (_Wrecks[i])
                 {
-                    std::cout << "OK" << std::endl;
                     delete _Wrecks[i];
                     _Wrecks[i] = nullptr;
                 }
