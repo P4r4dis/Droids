@@ -60,7 +60,21 @@ PART4_SRC_TEST			=	$(PART4_TST_PATH)/$(NAME_SUPPLY)_test.cpp
 TEST_NAME_SUPPLY		= 	test_$(NAME_SUPPLY)
 
 ###############################################
+PART5_PATH 				= 	./part5_DroidFactory
+PART5_SRC_PATH			=	./part5_DroidFactory/src
+PART5_TST_PATH			=	./part5_DroidFactory/tests
+PART5_INC_PATH			=	./part5_DroidFactory/include
+NAME_DROIDFACTORY		=	DroidFactory
+PART5_SRC				=	$(PART5_SRC_PATH)/DroidFactory.cpp \
+							$(PART5_SRC_PATH)/Supply.cpp \
+							$(PART5_SRC_PATH)/Carrier.cpp \
+							$(PART5_SRC_PATH)/DroidMemory.cpp \
+							$(PART5_SRC_PATH)/Droid.cpp
 
+PART5_SRC_TEST			=	$(PART5_TST_PATH)/$(NAME_DROIDFACTORY)_test.cpp
+TEST_NAME_DROIDFACTORY	= 	test_$(NAME_DROIDFACTORY)
+
+###############################################
 BIN_PATH				=	./bin
 
 NAME					=	a.out
@@ -70,7 +84,7 @@ INCFLAGS				+=	-I $(PART0_INC_PATH)
 
 CPPFLAGS				+= 	-Wall -Wextra -Werror $(INCFLAGS)#-W -std=c++1z
 
-SRCS 					= 	$(PART4_SRC) \
+SRCS 					= 	$(PART5_SRC) \
 							$(BIN_PATH)/main.cpp
 
 OBJS					=	$(SRCS:.cpp=.o)
@@ -91,7 +105,7 @@ clean					:
 							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
-# @$(MAKE) $(CLEAN) -C $(PART5_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART5_TST_PATH)
 
 
 fclean					:	clean
@@ -106,8 +120,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART3_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART4_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART5_TST_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART5_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART5_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART5_PATH)
 
 re						: 	fclean all
 
@@ -131,6 +145,10 @@ part4 					: 	fclean
 							@$(MAKE) -C $(PART4_PATH)
 							$(PART4_PATH)/$(NAME_SUPPLY)
 
+part5 					: 	fclean
+							@$(MAKE) -C $(PART5_PATH)
+							$(PART5_PATH)/$(NAME_DROIDFACTORY)
+
 tests_run_part0			:	fclean
 							@$(MAKE) -C $(PART0_TST_PATH)
 							$(PART0_TST_PATH)/$(TEST_NAME_DROID)
@@ -151,12 +169,17 @@ tests_run_part4			:	fclean
 							@$(MAKE) -C $(PART4_TST_PATH)
 							$(PART4_TST_PATH)/$(TEST_NAME_SUPPLY)
 
+tests_run_part5			:	fclean
+							@$(MAKE) -C $(PART5_TST_PATH)
+							$(PART5_TST_PATH)/$(TEST_NAME_DROIDFACTORY)
+
 tests_run				:	fclean
 							@$(MAKE) tests_run_part0
 							@$(MAKE) tests_run_part1
 							@$(MAKE) tests_run_part2
 							@$(MAKE) tests_run_part3
 							@$(MAKE) tests_run_part4
+							@$(MAKE) tests_run_part5
 
 
-.PHONY					: 	all clean fclean re part0 tests_run_part0 part1 tests_run_part1 part2 tests_run_part2 part3 tests_run_part3 tests_run
+.PHONY					: 	all clean fclean re part0 tests_run_part0 part1 tests_run_part1 part2 tests_run_part2 part3 tests_run_part3 part4 tests_run_part4 part5 tests_run_part5 tests_run
