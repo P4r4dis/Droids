@@ -885,3 +885,42 @@ Droid 'wreck: 2' Destroyed\n\
 Supply : 0, Wreck\n");
 }
 
+Test(DroidFactory, test_DroidFactory_Construction)
+{
+    DroidFactory    factory(3);
+    DroidFactory    f;
+    Droid           **w = new Droid*[10];
+    // Droid           *newbie;
+    char            c = '0';
+
+    for (int i = 0; i < 3; ++i) {
+        w[i] = new Droid(std::string("wreck: ") + (char)(c + i));
+        *(w[i]->getBattleData()) += (i * 100);
+    }
+
+    Supply          s1(Supply::Silicon, 42);
+    Supply          s2(Supply::Iron, 70);
+    Supply          s3(Supply::Wreck, 3, w);
+
+    cr_assert(factory.getRatio() == 3);
+    cr_assert(factory.getSilicon() == 0);
+    cr_assert(factory.getIron() == 0);
+    cr_assert(factory.getExp() == 0);
+
+    factory.setRatio(1);
+    factory.setSilicon(1);
+    factory.setIron(1);
+    factory.setExp(1);
+
+    cr_assert(factory.getRatio() == 1);
+    cr_assert(factory.getSilicon() == 1);
+    cr_assert(factory.getIron() == 1);
+    cr_assert(factory.getExp() == 1);
+
+    factory = f;
+
+    cr_assert(factory.getRatio() == 2);
+    cr_assert(factory.getSilicon() == 0);
+    cr_assert(factory.getIron() == 0);
+    cr_assert(factory.getExp() == 0);
+}
