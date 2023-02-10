@@ -78,13 +78,39 @@ Droid                   *DroidFactory::operator>>(Droid *&rhs)
     return rhs;
 }
 
+DroidFactory            &DroidFactory::operator<<(const Supply &rhs)
+{
+    if (rhs.getTypes())
+    {
+        if (rhs.getTypes() == Supply::Silicon)
+            _Silicon += rhs.getAmount();
+        else if (rhs.getTypes() == Supply::Iron)
+            _Iron += rhs.getAmount();
+        else
+        {
+            for (size_t i = 0; i < rhs.getAmount(); i++)
+            {
+                Droid   *droid = rhs.getWrecks(i);
+                _Exp += (droid->getBattleData()->getExp() - _Exp) / _ratio;
+                _Iron += 80;
+                _Silicon += 30;
+                droid = nullptr;
+
+                delete droid;
+            }
+        }
+    }
+
+    return *this;
+}
+
 std::ostream            &operator<<(std::ostream &os, const DroidFactory &rhs)
 {
     os << "DroidFactory status report :" << std::endl;
     os << "Iron : " << rhs.getIron() << std::endl;
     os << "Silicon : " << rhs.getSilicon() << std::endl;
     os << "Exp : " << rhs.getExp() << std::endl;
-    os << "End of status report." << std::endl;
-    
+    os << "End of status report.";
+
     return os;
 }

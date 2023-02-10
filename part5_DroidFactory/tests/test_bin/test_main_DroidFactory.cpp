@@ -947,7 +947,7 @@ Test(DroidFactory, test_DroidFactory_stream_extraction_operator, .init = redirec
     cr_assert(newbie == nullptr);
 }
 
-Test(DroidFactory, test_DroidFactory_stream_insertion_operator)
+Test(DroidFactory, test_DroidFactory_stream_insertion_operator, .init = redirect_all_stdout)
 {
     DroidFactory    factory(3);
     DroidFactory    f;
@@ -966,4 +966,7 @@ Test(DroidFactory, test_DroidFactory_stream_insertion_operator)
 
     factory >> newbie;
     std::cout << newbie << std::endl;
+
+    factory << s1 << s2 << s3;
+    std::cout << factory << std::endl;
 }

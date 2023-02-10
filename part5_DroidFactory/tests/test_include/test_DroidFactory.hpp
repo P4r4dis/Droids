@@ -2,7 +2,9 @@
 # define    __TEST_DROIDFACTORY__
 #include <iostream>
 #include <ostream>
+
 #include "../test_include/test_Droid.hpp"
+#include "../test_include/test_Supply.hpp"
 class                   DroidFactory
 {
     private:
@@ -28,7 +30,7 @@ class                   DroidFactory
 
         DroidFactory    &operator=(const DroidFactory &rhs);
         Droid           *operator>>(Droid *&rhs);
-
+        DroidFactory    &operator<<(const Supply &rhs);
 };
         std::ostream    &operator<<(std::ostream &os, const DroidFactory &rhs);
 #endif //   !__TEST_DROIDFACTORY__
