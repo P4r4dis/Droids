@@ -1,6 +1,7 @@
 #ifndef     __TEST_DROIDFACTORY__
 # define    __TEST_DROIDFACTORY__
 #include <iostream>
+#include <ostream>
 #include "../test_include/test_Droid.hpp"
 class                   DroidFactory
 {
@@ -29,4 +30,5 @@ class                   DroidFactory
         Droid           *operator>>(Droid *&rhs);
 
 };
+        std::ostream    &operator<<(std::ostream &os, const DroidFactory &rhs);
 #endif //   !__TEST_DROIDFACTORY__
