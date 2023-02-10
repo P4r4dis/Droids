@@ -67,8 +67,10 @@ int     main(void)
     factory >> newbie;
     if (newbie == nullptr)
         std::cout << " newbie = nullptr = ok" << std::endl;
-    
 
+    std::cout << "overloading operator<< = ";
+    std::cout << newbie << std::endl;
+    
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;
 
     return 0;

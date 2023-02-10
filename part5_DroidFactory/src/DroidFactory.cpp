@@ -1,4 +1,5 @@
 #include "../include/DroidFactory.hpp"
+
 DroidFactory::DroidFactory(size_t ratio) :  _ratio(ratio), _Silicon(0), _Iron(0), _Exp(0)
 {}
 
@@ -75,4 +76,15 @@ Droid                   *DroidFactory::operator>>(Droid *&rhs)
         rhs = nullptr;
 
     return rhs;
+}
+
+std::ostream            &operator<<(std::ostream &os, const DroidFactory &rhs)
+{
+    os << "DroidFactory status report :" << std::endl;
+    os << "Iron : " << rhs.getIron() << std::endl;
+    os << "Silicon : " << rhs.getSilicon() << std::endl;
+    os << "Exp : " << rhs.getExp() << std::endl;
+    os << "End of status report." << std::endl;
+    
+    return os;
 }

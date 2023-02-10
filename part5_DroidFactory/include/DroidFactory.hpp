@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Droid.hpp"
+
 class                   DroidFactory
 {
     private:
@@ -30,4 +31,6 @@ class                   DroidFactory
         Droid           *operator>>(Droid *&rhs);
 
 };
+        std::ostream    &operator<<(std::ostream &os, const DroidFactory &rhs);
+
 #endif //   !__DROIDFACTORY__
