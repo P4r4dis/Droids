@@ -11,7 +11,7 @@ int     main(void)
     DroidFactory    factory(3);
     DroidFactory    f;
     Droid           **w = new Droid*[10];
-    // Droid           *newbie;
+    Droid           *newbie;
     char            c = '0';
 
     for (int i = 0; i < 3; ++i) {
@@ -62,6 +62,13 @@ int     main(void)
     factory.setSilicon(0);
     factory.setIron(0);
     factory.setExp(0);
+
+    std::cout << "overloading operator>> = ";
+    factory >> newbie;
+    if (newbie == nullptr)
+        std::cout << " newbie = nullptr = ok" << std::endl;
+    
+
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;
 
     return 0;

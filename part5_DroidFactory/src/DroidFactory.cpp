@@ -1,5 +1,4 @@
 #include "../include/DroidFactory.hpp"
-
 DroidFactory::DroidFactory(size_t ratio) :  _ratio(ratio), _Silicon(0), _Iron(0), _Exp(0)
 {}
 
@@ -59,6 +58,21 @@ DroidFactory            &DroidFactory::operator=(const DroidFactory &rhs)
     _Silicon = rhs._Silicon;
     _Iron = rhs._Iron;
     _Exp = rhs._Exp;
-    
+
     return *this;
+}
+
+Droid                   *DroidFactory::operator>>(Droid *&rhs)
+{
+    if (_Iron >= 100 && _Silicon >= 50)
+    {
+        _Iron -= 100;
+        _Silicon -= 50;
+        rhs = new Droid("");
+        rhs->getBattleData()->setExp((_Exp - _Exp) / _ratio);
+    }
+    else
+        rhs = nullptr;
+
+    return rhs;
 }

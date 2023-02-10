@@ -2,7 +2,7 @@
 # define    __DROIDFACTORY__
 
 #include <iostream>
-
+#include "Droid.hpp"
 class                   DroidFactory
 {
     private:
@@ -27,5 +27,7 @@ class                   DroidFactory
         void            setExp(size_t Exp);
 
         DroidFactory    &operator=(const DroidFactory &rhs);
+        Droid           *operator>>(Droid *&rhs);
+
 };
 #endif //   !__DROIDFACTORY__
