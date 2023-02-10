@@ -70,7 +70,9 @@ int     main(void)
 
     std::cout << "overloading operator<< = ";
     std::cout << newbie << std::endl;
-    
+
+    factory << s1 << s2;
+    std::cout << factory << std::endl;
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;
 
     return 0;

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Droid.hpp"
+#include "Supply.hpp"
 
 class                   DroidFactory
 {
@@ -29,7 +30,7 @@ class                   DroidFactory
 
         DroidFactory    &operator=(const DroidFactory &rhs);
         Droid           *operator>>(Droid *&rhs);
-
+        DroidFactory    &operator<<(const Supply &rhs);
 };
         std::ostream    &operator<<(std::ostream &os, const DroidFactory &rhs);
 
