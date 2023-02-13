@@ -78,6 +78,19 @@ Droid                   *DroidFactory::operator>>(Droid *&rhs)
     return rhs;
 }
 
+DroidFactory                  &operator>>(const Supply &lhs, DroidFactory &rhs)
+{
+    Droid   *droid = nullptr;
+
+    for (size_t i = 0; i < lhs.getAmount(); i++)
+    {
+        droid = lhs.getWrecks(i);
+        rhs.setExp(rhs.getExp() + (droid->getBattleData()->getExp() - rhs.getExp()) / rhs.getRatio());
+        rhs.setIron(rhs.getIron() + 80);
+        rhs.setSilicon(rhs.getSilicon() + 30);
+    }
+    return rhs;
+}
 DroidFactory            &DroidFactory::operator<<(const Supply &rhs)
 {
     if (rhs.getTypes())

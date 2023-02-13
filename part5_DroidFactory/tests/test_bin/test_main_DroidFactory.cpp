@@ -925,7 +925,7 @@ Test(DroidFactory, test_DroidFactory_Construction, .init = redirect_all_stdout)
     cr_assert(factory.getExp() == 0);
 }
 
-Test(DroidFactory, test_DroidFactory_stream_extraction_operator, .init = redirect_all_stdout)
+Test(DroidFactory, test_DroidFactory_stream_extraction_operator)//, .init = redirect_all_stdout)
 {
     DroidFactory    factory(3);
     DroidFactory    f;
@@ -943,8 +943,10 @@ Test(DroidFactory, test_DroidFactory_stream_extraction_operator, .init = redirec
     Supply          s3(Supply::Wreck, 3, w);
 
     factory >> newbie;
-
     cr_assert(newbie == nullptr);
+    std::cout << newbie << std::endl;
+    factory << s1 << s2;
+    std::cout << factory << std::endl;
 }
 
 Test(DroidFactory, test_DroidFactory_stream_insertion_operator, .init = redirect_all_stdout)
@@ -967,6 +969,8 @@ Test(DroidFactory, test_DroidFactory_stream_insertion_operator, .init = redirect
     factory >> newbie;
     std::cout << newbie << std::endl;
 
-    factory << s1 << s2 << s3;
+    factory << s1 << s2;
+    std::cout << factory << std::endl;
+    s3 >> factory >> newbie;
     std::cout << factory << std::endl;
 }
