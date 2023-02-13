@@ -947,6 +947,8 @@ Test(DroidFactory, test_DroidFactory_stream_extraction_operator)//, .init = redi
     std::cout << newbie << std::endl;
     factory << s1 << s2;
     std::cout << factory << std::endl;
+    s3 >> factory >> newbie;
+    std::cout << factory << std::endl;
 }
 
 Test(DroidFactory, test_DroidFactory_stream_insertion_operator, .init = redirect_all_stdout)
