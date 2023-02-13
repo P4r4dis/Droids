@@ -73,6 +73,10 @@ int     main(void)
 
     factory << s1 << s2;
     std::cout << factory << std::endl;
+
+    std::cout << "overloading operator>> = ";
+    s3 >> factory >> newbie;
+    std::cout << factory << std::endl;
     std::cout << "REAL MAIN STARTING :--------------------------" << std::endl;
 
     return 0;

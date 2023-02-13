@@ -104,6 +104,21 @@ DroidFactory            &DroidFactory::operator<<(const Supply &rhs)
     return *this;
 }
 
+
+DroidFactory                  &operator>>(const Supply &lhs, DroidFactory &rhs)
+{
+    Droid   *droid = nullptr;
+
+    for (size_t i = 0; i < lhs.getAmount(); i++)
+    {
+        droid = lhs.getWrecks(i);
+        rhs.setExp(rhs.getExp() + (droid->getBattleData()->getExp() - rhs.getExp()) / rhs.getRatio());
+        rhs.setIron(rhs.getIron() + 80);
+        rhs.setSilicon(rhs.getSilicon() + 30);
+    }
+    return rhs;
+}
+
 std::ostream            &operator<<(std::ostream &os, const DroidFactory &rhs)
 {
     os << "DroidFactory status report :" << std::endl;

@@ -33,5 +33,6 @@ class                   DroidFactory
         DroidFactory    &operator<<(const Supply &rhs);
 };
         std::ostream    &operator<<(std::ostream &os, const DroidFactory &rhs);
+        DroidFactory    &operator>>(const Supply &lhs, DroidFactory &rhs);
 
 #endif //   !__DROIDFACTORY__
