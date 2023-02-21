@@ -1,27 +1,31 @@
-#include "../part0_Droid/include/Droid.hpp"
+#include "../part4_Supply/include/Droid.hpp"
+#include "../part4_Supply/include/DroidMemory.hpp"
+#include "../part4_Supply/include/Carrier.hpp"
+#include "../part4_Supply/include/Supply.hpp"
+
 #include <iostream>
 
 int     main(void)
 {
-    // std::cout << "PART 0 - Droid MAIN - START :" << std::endl;
-    // Droid   d;
-    // Droid   d1("Avenger");
-    // size_t  Durasel = 200;
+    Droid** w = new Droid*[10];
+    char c = '0';
+    for (int i = 0; i < 3; ++i) {
+        w[i] = new Droid(std::string("wreck: ") + (char)(c + i));
+    }
+    Supply s1(Supply::Silicon, 42);
+    Supply s2(Supply::Iron, 70);
+    Supply s3(Supply::Wreck, 3, w);
 
-    // std::cout << d << std::endl;
-    // std::cout << d1 << std::endl;
-    // d = d1;
-    // d.setStatus(new std::string("Kill Kill Kill!"));
-    // d << Durasel;
-    // std::cout << d << "--" << Durasel << std::endl;
-    // Droid d2 = d;
-    // d.setId("Rex");
-    // std::cout << (d2 != d) << std::endl;
-
-    // d2.~Droid();
-    // d1.~Droid();
-    // d.~Droid();
-    // std::cout << "PART 0 - Droid MAIN - END :" << std::endl;
+    std::cout << s3 << std::endl;
+    size_t s = s2;
+    std::cout << s << std::endl;
+    std::cout << *(*(--s3)) << std::endl;
+    std::cout << *(++s3)->getStatus() << std::endl;
+    ++s3;
+    *s3 = 0;
+    std::cout << *s3 << std::endl;
+    std::cout << s2 << std::endl;
+    std::cout << !s3 << std::endl;
 
 
     return 0;
